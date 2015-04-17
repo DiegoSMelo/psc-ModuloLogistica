@@ -3,7 +3,7 @@ package domain.exceptions;
 public class DAOException extends Exception {
 
 	/**
-	 * 
+	 * Exception responsável pela camada DAO.
 	 */
 	private static final long serialVersionUID = 1L;
 

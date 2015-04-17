@@ -15,27 +15,56 @@ public abstract class DAOGeneric<Entidade> implements IDAOGeneric<Entidade>{
 	
 	
 	@Override
-	public void inserir(Entidade obj) throws DAOException {
+	public final void inserir(Entidade obj) throws DAOException {
 		EntityTransaction et = this.getEntityManager().getTransaction();
 		
 		try{
+			
 			et.begin();
+			
 			this.getEntityManager().persist(obj);
+			
 			et.commit();
-		}catch(Exception ex){
-			throw new DAOException("Erro ao inserir no banco de dados.");
+	
+		}catch(Exception e){
+			throw new DAOException("Database error: Erro ao inserir no banco de dados.");
 		}
 	}
 
 	@Override
-	public void alterar(Entidade entidade) {
-		// TODO Auto-generated method stub
+	public final void alterar(Entidade obj) throws DAOException {
+		EntityTransaction et = this.getEntityManager().getTransaction();
+		
+		try {
+			
+			et.begin();
+			
+			obj = this.getEntityManager().merge(obj);
+			
+			et.commit();
+			
+		} catch (Exception e) {
+			throw new DAOException("Database error: Erro ao editar item.");
+		}
 		
 	}
 
 	@Override
-	public void remover(Entidade entidade) {
-		// TODO Auto-generated method stub
+	public final void remover(Entidade obj) throws DAOException {
+		EntityTransaction et = this.getEntityManager().getTransaction();
+		
+		try {
+			
+			et.begin();
+			
+			obj = this.getEntityManager().merge(obj);
+			this.getEntityManager().remove(obj);
+			
+			et.commit();
+			
+		} catch (Exception e) {
+			throw new DAOException("Database error: Erro ao remover item.");
+		}
 		
 	}
 
