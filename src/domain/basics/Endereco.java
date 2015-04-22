@@ -8,12 +8,12 @@ public class Endereco {
 	
 	private String logradouro;
 	private String bairro;
-	private String cep;
 	private String numero;
+	private String cep;
 	private String cidade;
-	
 	@Enumerated
 	private UF uf;
+	
 	
 	
 	public String getLogradouro() {
@@ -28,17 +28,17 @@ public class Endereco {
 	public void setBairro(String bairro) {
 		this.bairro = bairro;
 	}
-	public String getCep() {
-		return cep;
-	}
-	public void setCep(String cep) {
-		this.cep = cep;
-	}
 	public String getNumero() {
 		return numero;
 	}
 	public void setNumero(String numero) {
 		this.numero = numero;
+	}
+	public String getCep() {
+		return cep;
+	}
+	public void setCep(String cep) {
+		this.cep = cep;
 	}
 	public String getCidade() {
 		return cidade;
@@ -52,4 +52,5 @@ public class Endereco {
 	public void setUf(UF uf) {
 		this.uf = uf;
 	}
+	
 }

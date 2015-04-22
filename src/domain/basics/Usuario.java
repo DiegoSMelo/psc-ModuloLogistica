@@ -14,7 +14,8 @@ public class Usuario {
 	
 	@Id @GeneratedValue
 	private Long codigo;
-	@Column(unique=true)
+	
+	@Column(unique=true, nullable=false)
 	private String cpf;
 	
 	private String nome;
@@ -26,9 +27,10 @@ public class Usuario {
 	@Embedded
 	private Endereco endereco;
 	
-	@Column(unique=true)
+	@Column(unique=true, nullable=false)
 	private String login;
 	
+	@Column(nullable=false)
 	private String senha;
 	
 	@Enumerated
