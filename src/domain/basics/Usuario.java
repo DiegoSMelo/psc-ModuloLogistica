@@ -6,8 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-import domain.basics.enums.Situacao;
+import domain.basics.enums.SituacaoUsuario;
 
 @Entity
 public class Usuario {
@@ -34,13 +35,25 @@ public class Usuario {
 	private String senha;
 	
 	@Enumerated
-	private Situacao situacao;
+	private SituacaoUsuario situacao;
+	
+	@ManyToOne
+	private PontoEstrategico pontoEstrategico;
 	
 	
-	public Situacao getSituacao() {
+	
+	
+	
+	public PontoEstrategico getPontoEstrategico() {
+		return pontoEstrategico;
+	}
+	public void setPontoEstrategico(PontoEstrategico pontoEstrategico) {
+		this.pontoEstrategico = pontoEstrategico;
+	}
+	public SituacaoUsuario getSituacao() {
 		return situacao;
 	}
-	public void setSituacao(Situacao situacao) {
+	public void setSituacao(SituacaoUsuario situacao) {
 		this.situacao = situacao;
 	}
 	public String getLogin() {

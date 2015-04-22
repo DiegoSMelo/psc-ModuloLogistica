@@ -5,7 +5,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class PontoEstrategico {
@@ -15,8 +14,10 @@ public class PontoEstrategico {
 	
 	@Column(nullable=false)
 	private String nome;
+	
 	@Column(nullable=false)
-	private String empresaResponsavel;
+	private String empresaResponsavel;//Seria necessário, realmente?
+	
 	@Embedded
 	private Endereco endereco;
 	
@@ -25,11 +26,8 @@ public class PontoEstrategico {
 	@Column(unique=true, nullable=false)
 	private String cnpj;
 	
-	@ManyToOne
-	private Cliente cliente;
 	
-	
-	
+
 	public Long getCodigo() {
 		return codigo;
 	}
@@ -66,11 +64,6 @@ public class PontoEstrategico {
 	public void setCnpj(String cnpj) {
 		this.cnpj = cnpj;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+	
 	
 }

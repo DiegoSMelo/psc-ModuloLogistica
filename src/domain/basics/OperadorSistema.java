@@ -12,33 +12,39 @@ public class OperadorSistema {
 	
 	@Id @GeneratedValue
 	private Long codigo;
-	@Column(unique=true, nullable=false)
-	private String matricula;
+	
 	@Column(unique=true, nullable=false)
 	private String cpf;
+	
 	@Column(nullable=false)
 	private String nome;
+	
 	@Embedded
 	private Endereco endereco;
+	
 	private String telefone;
+	
+	private String email;
+	
 	@ManyToOne
 	private PontoEstrategico pontoEstrategico;
 	
 	
 	
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public Long getCodigo() {
 		return codigo;
 	}
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
-	public String getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
+	
 	public String getCpf() {
 		return cpf;
 	}
