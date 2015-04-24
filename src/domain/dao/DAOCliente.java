@@ -18,7 +18,7 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 	public Cliente buscarClientePorLoginSenha(String login, String senha) throws DAOException {
 		
 		try {
-			TypedQuery<Cliente> result = em.createQuery("SELECT c FROM Cliente c WHERE c.login = :login AND c.senha = :senha", Cliente.class);
+			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.login = :login AND c.senha = :senha", Cliente.class);
 			result.setParameter("login", login);
 			result.setParameter("senha", senha);
 			

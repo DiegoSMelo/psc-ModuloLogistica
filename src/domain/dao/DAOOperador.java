@@ -18,7 +18,7 @@ public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 	@Override
 	public Operador buscaOperadorPorLoginSenhaNivel(String login, String senha, NivelOperador nivel) throws DAOException {
 		try {
-			TypedQuery<Operador> result = em.createQuery("SELECT o FROM Operador o WHERE o.login = :login AND o.senha = :senha AND o.nivelOperador = :nivel", Operador.class);
+			TypedQuery<Operador> result = entityManager.createQuery("SELECT o FROM Operador o WHERE o.login = :login AND o.senha = :senha AND o.nivelOperador = :nivel", Operador.class);
 			result.setParameter("login", login);
 			result.setParameter("senha", senha);
 			result.setParameter("nivel", nivel);

@@ -1,16 +1,20 @@
 package domain.dao.generics;
-
+ 
 import java.util.List;
-
-import domain.exceptions.DAOException;
-
+ 
 public interface IDAOGeneric<Entidade> {
-	
-	public void inserir(Entidade entidade) throws DAOException;
-    
-    public void alterar(Entidade entidade) throws DAOException;
+ 
+    public void inserir(Entidade entidade);
      
-    public void remover(Entidade entidade) throws DAOException;
-    
-    public List<Entidade> listar() throws DAOException;
+    public void alterar(Entidade entidade);
+     
+    public void remover(Entidade entidade);
+     
+    public Entidade consultarPorId(Integer id);
+     
+    public List<Entidade> consultarTodos();
+     
+    public List<Entidade> consultarTodos(Integer indiceInicial,   Integer quantidade);
+     
+ 
 }
