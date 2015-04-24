@@ -1,13 +1,11 @@
 package domain.dao;
 
-import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
 import domain.basics.profile.Cliente;
-import domain.basics.profile.Usuario;
 import domain.dao.generics.DAOGeneric;
+import domain.exceptions.DAOException;
 
 public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 
@@ -16,18 +14,23 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 		// TODO Auto-generated constructor stub
 	}
 
-	
 	@Override
-	public boolean verificaExistenciaPorLoginSenha(String login, String senha) {
-		TypedQuery<Usuario> result = em.createQuery("SELECT u FROM Usuario u WHERE u.login = :l AND u.senha = :s", Usuario.class); 
-		result.setParameter("l", login);
-		result.setParameter("s", senha);
-		List<Usuario> usuarios = result.getResultList();
+	public Cliente buscarClientePorLoginSenha(String login, String senha) throws DAOException {
 		
-		if (usuarios.size() > 0) {
-			return true;
+		try {
+			TypedQuery<Cliente> result = em.createQuery("SELECT c FROM Cliente c WHERE c.login = :login AND c.senha = :senha", Cliente.class);
+			result.setParameter("login", login);
+			result.setParameter("senha", senha);
+			
+			Cliente cliente = result.getSingleResult();
+			
+			return cliente;
+		} catch (Exception e) {
+			throw new DAOException("Falha ao consultar usuário.");
 		}
-		return false;
 	}
+
+	
+	
 
 }
