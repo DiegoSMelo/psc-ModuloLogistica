@@ -1,9 +1,9 @@
 package domain.dao;
 
-import domain.basics.Usuario;
+import domain.basics.profile.Cliente;
 import domain.dao.generics.IDAOGeneric;
 
-public interface IDAOUsuario extends IDAOGeneric<Usuario>{
+public interface IDAOCliente extends IDAOGeneric<Cliente>{
 
 	public boolean verificaExistenciaPorLoginSenha(String login, String senha);
 }

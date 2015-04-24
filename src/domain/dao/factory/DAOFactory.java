@@ -3,13 +3,13 @@ package domain.dao.factory;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
-import domain.dao.DAOUsuario;
-import domain.dao.IDAOUsuario;
+import domain.dao.DAOCliente;
+import domain.dao.IDAOCliente;
 
 public abstract class DAOFactory {
 
 	private static final EntityManagerFactory factory;
-	private static IDAOUsuario daoUsuario;
+	private static IDAOCliente daoCliente;
 	
 	
 	
@@ -21,9 +21,9 @@ public abstract class DAOFactory {
 	
 	
 	
-	public static IDAOUsuario getDaoUsuario(){
-		daoUsuario = new DAOUsuario(factory.createEntityManager());
-		return daoUsuario;
+	public static IDAOCliente getDaoCliente(){
+		daoCliente = new DAOCliente(factory.createEntityManager());
+		return daoCliente;
 	}
 	
 	

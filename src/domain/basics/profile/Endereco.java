@@ -1,4 +1,4 @@
-package domain.basics;
+package domain.basics.profile;
 
 import javax.persistence.Enumerated;
 

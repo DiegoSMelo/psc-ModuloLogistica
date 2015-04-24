@@ -5,12 +5,13 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-import domain.basics.Usuario;
+import domain.basics.profile.Cliente;
+import domain.basics.profile.Usuario;
 import domain.dao.generics.DAOGeneric;
 
-public class DAOUsuario extends DAOGeneric<Usuario> implements IDAOUsuario{
+public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 
-	public DAOUsuario(EntityManager em) {
+	public DAOCliente(EntityManager em) {
 		super(em);
 		// TODO Auto-generated constructor stub
 	}
