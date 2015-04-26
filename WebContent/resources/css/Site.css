@@ -1,0 +1,210 @@
+﻿#titulo {
+   opacity: 0.9;
+
+}
+
+
+
+body {
+    /*background-image: url("/Content/images/mic.jpg");*/
+    background-color: darkgray;
+}
+
+#formLogin {
+    opacity: 0.9;
+    margin-top: 100px;
+  
+}
+
+#errormessage {
+  color: red;
+}
+
+
+#beforelogin {
+    display: none;
+    margin-top: 140px;
+    opacity: 0.9;
+}
+
+
+
+
+
+
+#followingBallsG{
+position:relative;
+margin-left: 622px;
+width:115px;
+height:9px;
+}
+
+.followingBallsG{
+background-color:#000000;
+position:absolute;
+top:0;
+left:0;
+width:9px;
+height:9px;
+-moz-border-radius:5px;
+-moz-animation-name:bounce_followingBallsG;
+-moz-animation-duration:2.6s;
+-moz-animation-iteration-count:infinite;
+-moz-animation-direction:linear;
+-webkit-border-radius:5px;
+-webkit-animation-name:bounce_followingBallsG;
+-webkit-animation-duration:2.6s;
+-webkit-animation-iteration-count:infinite;
+-webkit-animation-direction:linear;
+-ms-border-radius:5px;
+-ms-animation-name:bounce_followingBallsG;
+-ms-animation-duration:2.6s;
+-ms-animation-iteration-count:infinite;
+-ms-animation-direction:linear;
+-o-border-radius:5px;
+-o-animation-name:bounce_followingBallsG;
+-o-animation-duration:2.6s;
+-o-animation-iteration-count:infinite;
+-o-animation-direction:linear;
+border-radius:5px;
+animation-name:bounce_followingBallsG;
+animation-duration:2.6s;
+animation-iteration-count:infinite;
+animation-direction:linear;
+}
+
+#followingBallsG_1{
+-moz-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-webkit-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-ms-animation-delay:0s;
+}
+
+#followingBallsG_1{
+-o-animation-delay:0s;
+}
+
+#followingBallsG_1{
+animation-delay:0s;
+}
+
+#followingBallsG_2{
+-moz-animation-delay:0.26s;
+-webkit-animation-delay:0.26s;
+-ms-animation-delay:0.26s;
+-o-animation-delay:0.26s;
+animation-delay:0.26s;
+}
+
+#followingBallsG_3{
+-moz-animation-delay:0.52s;
+-webkit-animation-delay:0.52s;
+-ms-animation-delay:0.52s;
+-o-animation-delay:0.52s;
+animation-delay:0.52s;
+}
+
+#followingBallsG_4{
+-moz-animation-delay:0.78s;
+-webkit-animation-delay:0.78s;
+-ms-animation-delay:0.78s;
+-o-animation-delay:0.78s;
+animation-delay:0.78s;
+}
+
+@-moz-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#000000;
+}
+
+50%{
+left:107px;
+background-color:#FFFFFF;
+}
+
+100%{
+left:0px;
+background-color:#000000;
+}
+
+}
+
+@-webkit-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#000000;
+}
+
+50%{
+left:107px;
+background-color:#FFFFFF;
+}
+
+100%{
+left:0px;
+background-color:#000000;
+}
+
+}
+
+@-ms-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#000000;
+}
+
+50%{
+left:107px;
+background-color:#FFFFFF;
+}
+
+100%{
+left:0px;
+background-color:#000000;
+}
+
+}
+
+@-o-keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#000000;
+}
+
+50%{
+left:107px;
+background-color:#FFFFFF;
+}
+
+100%{
+left:0px;
+background-color:#000000;
+}
+
+}
+
+@keyframes bounce_followingBallsG{
+0%{
+left:0px;
+background-color:#000000;
+}
+
+50%{
+left:107px;
+background-color:#FFFFFF;
+}
+
+100%{
+left:0px;
+background-color:#000000;
+}
+
+}
+
+

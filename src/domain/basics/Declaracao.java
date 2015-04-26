@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import domain.basics.enums.TipoDeclaracao;
+import domain.basics.profile.Cliente;
 
 @Entity
 public class Declaracao {
@@ -38,6 +39,9 @@ public class Declaracao {
 
 	@ManyToOne
 	private PontoEstrategico pontoEstrategico;
+	
+	@ManyToOne
+	private Cliente cliente;
 	
 	public Long getCodigo() {
 		return Codigo;
@@ -80,6 +84,12 @@ public class Declaracao {
 	}
 	public void setPontoEstrategico(PontoEstrategico pontoEstrategico) {
 		this.pontoEstrategico = pontoEstrategico;
+	}
+	public Cliente getCliente() {
+		return cliente;
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 	
 	

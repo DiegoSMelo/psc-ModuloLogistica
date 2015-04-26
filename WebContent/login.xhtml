@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+   
+      
+>
+
+<h:head>     
+            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+            <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+            <meta name="viewport" content="width=device-width, initial-scale=1" />		
+ 
+            <title><ui:insert name="tituloPagina" value="Módulo Lógistica"/></title>
+          
+            <h:outputStylesheet name="/bootstrap/css/bootstrap.css" />
+             <h:outputStylesheet name="/css/Site.css" />
+   
+</h:head>
+
+<h:body>
+	
+		<div id="titulo" class="jumbotron page-header">
+
+    <h2>Módulo Logística <small>Login</small> </h2>
+
+
+</div>
+
+<div id="formLogin" class="jumbotron">
+	<h:form styleClass="form-horizontal" prependId="false">
+   	<h:outputScript name="jsf.js" library="javax.faces" target="head" />
+       
+        <div class="form-group">
+        	<h:outputLabel value="Login" styleClass="col-sm-2 control-label"></h:outputLabel>
+            <div class="col-sm-2">
+            
+            	<h:inputText styleClass="form-control" id="inputLogin" value="#{beanAutenticacao.login}"></h:inputText>
+                
+            </div>
+        </div>
+
+        <div class="form-group">
+        	<h:outputLabel value="Senha" styleClass="col-sm-2 control-label"></h:outputLabel>
+            <div class="col-sm-2">
+            	<h:inputSecret styleClass="form-control" id="inputsenha" value="#{beanAutenticacao.senha}"></h:inputSecret>
+              
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">
+                <h:commandButton actionListener="#{beanAutenticacao.autenticar}" value="Login" styleClass="btn btn-default" id="btnlogin" >
+                	<f:ajax execute="inputLogin inputsenha" render="errormessage" />
+                </h:commandButton>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-2">              
+                <h:outputText id="errormessage"></h:outputText>
+            </div>
+        </div>
+
+    </h:form>
+</div>
+
+
+
+<div id="beforelogin" class="jumbotron text-center"></div>
+		
+	
+		
+</h:body>
+
+
+
+
+	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js" />      
+      <h:outputScript name="/bootstrap/js/bootstrap.js" />
+       <h:outputScript name="/js/scripts.js" />
+</html>

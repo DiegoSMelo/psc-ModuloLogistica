@@ -4,9 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import domain.basics.profile.Cliente;
 
 @Entity
 public class Item {
@@ -29,8 +26,7 @@ public class Item {
 	@Column(nullable=false)
 	private Double peso;
 	
-	@ManyToOne
-	private Cliente cliente;
+	
 	
 	
 	public Long getCodigo() {
@@ -69,12 +65,7 @@ public class Item {
 	public void setPeso(Double peso) {
 		this.peso = peso;
 	}
-	public Cliente getCliente() {
-		return cliente;
-	}
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
-	}
+	
 	
 	
 }
