@@ -1,13 +1,10 @@
 package domain.basics;
 
-import java.util.List;
-
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 import domain.basics.profile.Endereco;
 
@@ -26,8 +23,11 @@ public class PontoEstrategico {
 	
 	private String email;
 	
-	@OneToMany(mappedBy="pontoEstrategico", fetch = FetchType.LAZY)
-	private List<Declaracao> listaDeclaracoes;
+	@Column(nullable=false)
+	private Integer capacidadePorInventarios;
+	
+	@Column(nullable=false)
+	private Integer capacidadeAtualPorInventarios;
 	
 	
 	public Long getCodigo() {
@@ -60,12 +60,20 @@ public class PontoEstrategico {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public List<Declaracao> getListaDeclaracoes() {
-		return listaDeclaracoes;
+	public Integer getCapacidadePorInventarios() {
+		return capacidadePorInventarios;
 	}
-	public void setListaDeclaracoes(List<Declaracao> listaDeclaracoes) {
-		this.listaDeclaracoes = listaDeclaracoes;
+	public void setCapacidadePorInventarios(Integer capacidadePorInventarios) {
+		this.capacidadePorInventarios = capacidadePorInventarios;
 	}
+	public Integer getCapacidadeAtualPorInventarios() {
+		return capacidadeAtualPorInventarios;
+	}
+	public void setCapacidadeAtualPorInventarios(
+			Integer capacidadeAtualPorInventarios) {
+		this.capacidadeAtualPorInventarios = capacidadeAtualPorInventarios;
+	}
+
 	
 	
 	

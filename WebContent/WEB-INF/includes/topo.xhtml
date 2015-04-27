@@ -30,7 +30,20 @@ xmlns:f="http://java.sun.com/jsf/core">
         </li>
       </ul>
      
-     
+       <ul class="nav navbar-nav navbar-right">
+
+           <li>
+          		
+          	
+             	<h:form>
+					<h:commandLink actionListener="#{beanAutenticacao.logoff}">
+						<span class="glyphicon glyphicon-off" aria-hidden="true"></span> Sair
+					</h:commandLink>
+				</h:form>  
+				
+           </li>
+           
+        </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

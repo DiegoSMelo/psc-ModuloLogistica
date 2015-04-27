@@ -43,6 +43,12 @@ public class Declaracao {
 	@ManyToOne
 	private Cliente cliente;
 	
+	
+	
+	
+	
+	
+	
 	public Long getCodigo() {
 		return Codigo;
 	}

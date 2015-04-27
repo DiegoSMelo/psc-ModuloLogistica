@@ -2,9 +2,9 @@ package domain.util;
 
 public class Mensagens {
 	/**
-	 * Aguarde...
+	 * Estamos autenticando o usuário. Só um instante...
 	 */
-	public static String m1 = "Aguarde...";
+	public static String m1 = "Estamos autenticando o usuário. Só um instante...";
 	
 	/**
 	 * Usuário não encontrado.

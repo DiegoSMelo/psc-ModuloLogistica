@@ -6,6 +6,7 @@ import javax.persistence.TypedQuery;
 import domain.basics.profile.Cliente;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
+import domain.util.Mensagens;
 
 public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 
@@ -27,7 +28,7 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 			
 			return cliente;
 		} catch (Exception e) {
-			throw new DAOException("Falha ao consultar usuário.");
+			throw new DAOException(Mensagens.m2);
 		}
 	}
 
