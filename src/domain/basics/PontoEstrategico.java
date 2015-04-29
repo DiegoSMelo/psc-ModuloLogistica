@@ -24,10 +24,12 @@ public class PontoEstrategico {
 	private String email;
 	
 	@Column(nullable=false)
-	private Integer capacidadePorInventarios;
+	private Integer capacidadePorPreteleira;
 	
 	@Column(nullable=false)
-	private Integer capacidadeAtualPorInventarios;
+	private Integer capacidadeAtualPorPrateleira;
+	
+	
 	
 	
 	public Long getCodigo() {
@@ -60,19 +62,25 @@ public class PontoEstrategico {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public Integer getCapacidadePorInventarios() {
-		return capacidadePorInventarios;
+	public String getTelefone() {
+		return telefone;
 	}
-	public void setCapacidadePorInventarios(Integer capacidadePorInventarios) {
-		this.capacidadePorInventarios = capacidadePorInventarios;
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
 	}
-	public Integer getCapacidadeAtualPorInventarios() {
-		return capacidadeAtualPorInventarios;
+	public Integer getCapacidadePorPreteleira() {
+		return capacidadePorPreteleira;
 	}
-	public void setCapacidadeAtualPorInventarios(
-			Integer capacidadeAtualPorInventarios) {
-		this.capacidadeAtualPorInventarios = capacidadeAtualPorInventarios;
+	public void setCapacidadePorPreteleira(Integer capacidadePorPreteleira) {
+		this.capacidadePorPreteleira = capacidadePorPreteleira;
 	}
+	public Integer getCapacidadeAtualPorPrateleira() {
+		return capacidadeAtualPorPrateleira;
+	}
+	public void setCapacidadeAtualPorPrateleira(Integer capacidadeAtualPorPrateleira) {
+		this.capacidadeAtualPorPrateleira = capacidadeAtualPorPrateleira;
+	}
+	
 
 	
 	
