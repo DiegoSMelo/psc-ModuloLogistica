@@ -1,4 +1,4 @@
-package domain.bean;
+package domain.beans;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -8,7 +8,9 @@ import javax.faces.context.FacesContext;
 
 import org.primefaces.context.RequestContext;
 
+import domain.basics.enums.NivelOperador;
 import domain.basics.profile.Cliente;
+import domain.basics.profile.Operador;
 import domain.basics.profile.Usuario;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
@@ -18,33 +20,31 @@ import domain.util.Mensagens;
 
 @ManagedBean
 public class BeanAutenticacao implements Serializable{
+	
+//////////////////////////////ATRIBUTOS///////////////////////////////	
 	private static final long serialVersionUID = 1L;
 	
 	private String login;
 	private String senha;
-	
-	/**
-	 * 1 - Cliente
-	 * 2 - Administrativo
-	 * 3 -- Técnico
-	 */
 	private Integer nivel;
 	private Usuario usuarioLogado;
-
+//////////////////////////////ATRIBUTOS///////////////////////////////	
 	
 	
-	
+//////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
 		
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {
 			try {
 				
-				if (nivel == 1) {
+				if (getNivel() == 1) {
 					Cliente cliente = DAOFactory.getDaoCliente().buscarClientePorLoginSenha(getLogin(), getSenha());
 					
 					if (cliente != null) {
-						Cookies.RegistraCookieLogin(cliente.getCodigo());
+						
+						Cookies.RegistraCookieLogin(cliente.getCodigo(), getNivel());
+						
 						RequestContext.getCurrentInstance().execute("loginSucess_Cliente('" + Mensagens.m1 + "');");
 
 					} else {
@@ -52,12 +52,16 @@ public class BeanAutenticacao implements Serializable{
 					}
 				}
 				
-				if (nivel == 2) {
-					if (DAOFactory.getDaoCliente().buscarClientePorLoginSenha(
-							getLogin(), getSenha()) != null) {
+				
+				
+				if (getNivel() == 2) {
+					Operador operador = DAOFactory.getDaoOperador().buscaOperadorPorLoginSenhaNivel(getLogin(), getLogin(), NivelOperador.ADMINISTRATIVO);
+					
+					if (operador != null) {
 
-						RequestContext.getCurrentInstance().execute(
-								"loginSucess_UsuarioAdministrativo('" + Mensagens.m1 + "');");
+						Cookies.RegistraCookieLogin(operador.getCodigo(), getNivel());
+						
+						RequestContext.getCurrentInstance().execute("loginSucess_UsuarioAdministrativo('" + Mensagens.m1 + "');");
 
 					} else {
 						RequestContext.getCurrentInstance().execute(
@@ -65,12 +69,15 @@ public class BeanAutenticacao implements Serializable{
 					}
 				}
 				
-				if (nivel == 3) {
-					if (DAOFactory.getDaoCliente().buscarClientePorLoginSenha(
-							getLogin(), getSenha()) != null) {
-
-						RequestContext.getCurrentInstance().execute(
-								"loginSucess_UsuarioTecnico('" + Mensagens.m1 + "');");
+				
+				
+				if (getNivel() == 3) {
+					Operador operador = DAOFactory.getDaoOperador().buscaOperadorPorLoginSenhaNivel(getLogin(), getLogin(), NivelOperador.TECNICO);
+					if (operador != null) {
+						
+						Cookies.RegistraCookieLogin(operador.getCodigo(), getNivel());
+						
+						RequestContext.getCurrentInstance().execute("loginSucess_UsuarioTecnico('" + Mensagens.m1 + "');");
 
 					} else {
 						RequestContext.getCurrentInstance().execute(
@@ -96,17 +103,10 @@ public class BeanAutenticacao implements Serializable{
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
+//////////////////////////////MÉTODOS///////////////////////////////	
 	
 	
-	
-	
-
-	
-	
-	
-	
-	
-
+//////////////////////////////GET E SETS///////////////////////////////
 	public String getLogin() {
 		return login;
 	}
@@ -114,34 +114,46 @@ public class BeanAutenticacao implements Serializable{
 		this.login = login;
 	}
 
-
-
-
 	public String getSenha() {
 		return senha;
 	}
 	public void setSenha(String senha) {
-		this.senha = Criptografia.criptografar(senha);
+		this.senha = Criptografia.criptografarSenhas(senha);
 	}
-
-
-
-
+	
+	/**
+	 * 1 - Cliente
+	 * 2 - Administrativo
+	 * 3 -- Técnico
+	 */
 	public Integer getNivel() {
 		return nivel;
 	}
+	
+	/**
+	 * 1 - Cliente
+	 * 2 - Administrativo
+	 * 3 -- Técnico
+	 */
 	public void setNivel(Integer nivel) {
 		this.nivel = nivel;
 	}
 
-	
-
 	public Usuario getUsuarioLogado() {
-		usuarioLogado = DAOFactory.getDaoCliente().consultarPorId(Cookies.retornaIdUsuarioLogado());
+		
+		if (Cookies.retornaNivelUsuarioLogado() == 1) {
+			usuarioLogado = DAOFactory.getDaoCliente().consultarPorId(Cookies.retornaIdUsuarioLogado());
+		}
+		
+		if (Cookies.retornaNivelUsuarioLogado() == 2 || Cookies.retornaNivelUsuarioLogado() == 3) {
+			usuarioLogado = DAOFactory.getDaoOperador().consultarPorId(Cookies.retornaIdUsuarioLogado());
+		}
+		
+		
 		return usuarioLogado;
 	}
 	
-
+//////////////////////////////GET E SETS///////////////////////////////
 
 
 

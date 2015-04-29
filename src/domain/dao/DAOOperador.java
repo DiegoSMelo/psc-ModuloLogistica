@@ -7,6 +7,7 @@ import domain.basics.enums.NivelOperador;
 import domain.basics.profile.Operador;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
+import domain.util.Mensagens;
 
 public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 
@@ -27,7 +28,7 @@ public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 			
 			return operador;
 		} catch (Exception e) {
-			throw new DAOException("Falha ao consultar Usuário.");
+			throw new DAOException(Mensagens.m2);
 		}
 	}
 	
