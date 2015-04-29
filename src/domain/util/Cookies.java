@@ -14,43 +14,18 @@ public class Cookies {
 		
 		FacesContext.getCurrentInstance()
 		 .getExternalContext()
-		 .addResponseCookie("User", Criptografia.criptografar(codigoUsuario.toString()), null);
-	}
-	
-	
-	
-	public static boolean verificaSeEstaLogado(){
-		Map<String, Object> requestCookieMap = FacesContext.getCurrentInstance()
-				   .getExternalContext()
-				   .getRequestCookieMap();
-		
-		for (Map.Entry<String,Object> pair : requestCookieMap.entrySet()) {
-		    //System.out.println(pair.getKey());
-		   // System.out.println(pair.getValue());
-			if (pair.getKey().equals("User")) {
-				return true;
-			}
-		}
-		
-		return false;
+		 .addResponseCookie("User", codigoUsuario.toString(), null);
 	}
 	
 	
 	
 	public static Long retornaIdUsuarioLogado(){
-		Map<String, Object> requestCookieMap = FacesContext.getCurrentInstance()
-				   .getExternalContext()
-				   .getRequestCookieMap();
-		
-		for (Map.Entry<String,Object> pair : requestCookieMap.entrySet()) {
-		    //System.out.println(pair.getKey());
-		   // System.out.println(pair.getValue());
-			if (pair.getKey().equals("User")) {
-				return Long.parseLong(pair.getValue().toString());
-			}
-		}
-		
-		return null;
+		FacesContext ctx = FacesContext.getCurrentInstance();
+	    ExternalContext extContext = ctx.getExternalContext();
+	    Map<String, Object> cookies = extContext.getRequestCookieMap();
+	    Cookie cookie = (Cookie) cookies.get("User");
+	    
+	    return Long.parseLong(cookie.getValue());
 	}
 	
 	

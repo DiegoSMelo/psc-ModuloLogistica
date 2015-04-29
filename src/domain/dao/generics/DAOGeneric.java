@@ -129,7 +129,7 @@ public abstract class DAOGeneric<Entidade> implements IDAOGeneric<Entidade>{
      *            identificador
      * @return Objeto do tipo T
      */
-    public final Entidade consultarPorId(Integer chave) {
+    public final Entidade consultarPorId(Long chave) {
         Entidade instance = null;
         try {
             instance = (Entidade) getEntityManager().find(classePersistente, chave);

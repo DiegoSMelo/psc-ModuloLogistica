@@ -10,7 +10,7 @@ public interface IDAOGeneric<Entidade> {
      
     public void remover(Entidade entidade);
      
-    public Entidade consultarPorId(Integer id);
+    public Entidade consultarPorId(Long id);
      
     public List<Entidade> consultarTodos();
      

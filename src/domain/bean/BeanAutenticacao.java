@@ -9,6 +9,7 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
 import domain.basics.profile.Cliente;
+import domain.basics.profile.Usuario;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.util.Cookies;
@@ -28,6 +29,7 @@ public class BeanAutenticacao implements Serializable{
 	 * 3 -- Técnico
 	 */
 	private Integer nivel;
+	private Usuario usuarioLogado;
 
 	
 	
@@ -96,15 +98,18 @@ public class BeanAutenticacao implements Serializable{
 	}
 	
 	
+	
+	
 
+	
+	
+	
+	
+	
 
 	public String getLogin() {
 		return login;
 	}
-
-
-
-
 	public void setLogin(String login) {
 		this.login = login;
 	}
@@ -115,10 +120,6 @@ public class BeanAutenticacao implements Serializable{
 	public String getSenha() {
 		return senha;
 	}
-
-
-
-
 	public void setSenha(String senha) {
 		this.senha = Criptografia.criptografar(senha);
 	}
@@ -129,13 +130,17 @@ public class BeanAutenticacao implements Serializable{
 	public Integer getNivel() {
 		return nivel;
 	}
-
-
-
-
 	public void setNivel(Integer nivel) {
 		this.nivel = nivel;
 	}
+
+	
+
+	public Usuario getUsuarioLogado() {
+		usuarioLogado = DAOFactory.getDaoCliente().consultarPorId(Cookies.retornaIdUsuarioLogado());
+		return usuarioLogado;
+	}
+	
 
 
 
