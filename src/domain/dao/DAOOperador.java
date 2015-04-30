@@ -1,6 +1,7 @@
 package domain.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import domain.basics.enums.NivelOperador;
@@ -27,6 +28,25 @@ public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 			Operador operador = result.getSingleResult();
 			
 			return operador;
+		} catch (NoResultException e2) {
+			return null;
+		} catch (Exception e) {
+			throw new DAOException(Mensagens.m2);
+		}
+	}
+
+	@Override
+	public Operador buscaOperadorPorCPF(String cpf) throws DAOException {
+		try {
+			TypedQuery<Operador> result = entityManager.createQuery("SELECT o FROM Operador o WHERE o.cpf = :cpf", Operador.class);
+			result.setParameter("cpf", cpf);
+			
+			
+			Operador operador = result.getSingleResult();
+			
+			return operador;
+		} catch (NoResultException e2) {
+			return null;
 		} catch (Exception e) {
 			throw new DAOException(Mensagens.m2);
 		}

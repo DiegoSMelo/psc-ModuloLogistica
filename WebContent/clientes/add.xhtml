@@ -1,0 +1,84 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+template="#{beanGeral.template}">
+	<ui:define name="body">
+	
+
+
+
+
+<ol class="breadcrumb">
+  <li><h:outputLink value="/psc-ModuloLogistica">Página Inicial</h:outputLink></li>
+  <li><h:outputLink value="/psc-ModuloLogistica/clientes/index.xhtml">Clientes</h:outputLink></li>
+</ol>
+		
+		
+		
+<h:form styleClass="form-horizontal" prependId="false">
+
+  <div class="form-group">  
+    <h:outputLabel value="CNPJ" for="inputCnpj" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputText styleClass="form-control" id="inputCnpj" value="#{beanCliente.cliente.cnpj}"></h:inputText>
+    </div>
+  </div>
+  
+  <div class="form-group">
+   <h:outputLabel value="Nome" for="inputNome" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputText styleClass="form-control" id="inputNome" value="#{beanCliente.cliente.nome}"></h:inputText>
+    </div>
+  </div>
+  
+   <div class="form-group">
+   <h:outputLabel value="E-mail" for="inputEmail" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputText styleClass="form-control" id="inputEmail" value="#{beanCliente.cliente.email}"></h:inputText>
+    </div>
+  </div>
+  
+   <div class="form-group">
+   <h:outputLabel value="Telefone" for="inputTelefone" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputText styleClass="form-control" id="inputTelefone" value="#{beanCliente.cliente.telefone}"></h:inputText>
+    </div>
+  </div>
+  
+  <div class="form-group">
+   <h:outputLabel value="Login" for="inputLogin" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputText styleClass="form-control" id="inputLogin" value="#{beanCliente.cliente.login}"></h:inputText>
+    </div>
+  </div>
+  
+  <div class="form-group">
+   <h:outputLabel value="Senha" for="inputSenha" styleClass="col-sm-2 control-label"></h:outputLabel>
+    <div class="col-sm-10">
+      <h:inputSecret styleClass="form-control" id="inputSenha" value="#{beanCliente.cliente.senha}"></h:inputSecret>
+    </div>
+  </div>
+  
+
+
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <h:commandButton styleClass="btn btn-default" action="#{beanCliente.cadastrar}" value="Salvar"></h:commandButton>
+    </div>
+  </div>
+  
+  
+</h:form>
+
+    
+    
+    
+    
+    
+		
+	</ui:define>
+</ui:composition>

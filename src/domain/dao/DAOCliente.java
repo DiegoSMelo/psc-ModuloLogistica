@@ -1,6 +1,7 @@
 package domain.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import domain.basics.profile.Cliente;
@@ -27,9 +28,32 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 			Cliente cliente = result.getSingleResult();
 			
 			return cliente;
-		} catch (Exception e) {
+		}catch (NoResultException e2) {
+			return null;
+		} 
+		catch (Exception e) {
 			throw new DAOException(Mensagens.m2);
 		}
+	}
+
+	@Override
+	public Cliente buscarClientePorCNPJ(String cnpj) throws DAOException {
+		try {
+			
+			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.cnpj = :cnpj", Cliente.class);
+			result.setParameter("cnpj", cnpj);
+			
+			
+			Cliente cliente = result.getSingleResult();
+			
+			return cliente;
+		}catch (NoResultException e2) {
+			return null;
+		} 
+		catch (Exception e) {
+			throw new DAOException(Mensagens.m2);
+		} 
+		
 	}
 
 	

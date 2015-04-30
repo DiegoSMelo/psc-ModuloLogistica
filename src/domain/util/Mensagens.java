@@ -10,4 +10,9 @@ public class Mensagens {
 	 * Usuário não encontrado.
 	 */
 	public static String m2 = "Usuário não encontrado.";
+	
+	/**
+	 * "Falha ao salvar"
+	 */
+	public static String m3 = "Falha ao salvar";
 }

@@ -1,12 +1,12 @@
-package domain.dao;
+package domain.rn;
 
 import domain.basics.enums.NivelOperador;
 import domain.basics.profile.Operador;
-import domain.dao.generics.IDAOGeneric;
 import domain.exceptions.DAOException;
 
-public interface IDAOOperador extends IDAOGeneric<Operador>{
+public interface IRNOperador {
 	
+	public void salvar(Operador operador) throws DAOException;
 	public Operador buscaOperadorPorLoginSenhaNivel(String login, String senha, NivelOperador nivel) throws DAOException;
-	public Operador buscaOperadorPorCPF(String cpf) throws DAOException;
+	public Operador consultarPorId(Long id);
 }

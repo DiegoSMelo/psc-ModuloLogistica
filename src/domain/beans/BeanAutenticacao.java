@@ -12,8 +12,8 @@ import domain.basics.enums.NivelOperador;
 import domain.basics.profile.Cliente;
 import domain.basics.profile.Operador;
 import domain.basics.profile.Usuario;
-import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
+import domain.facade.Fachada;
 import domain.util.Cookies;
 import domain.util.Criptografia;
 import domain.util.Mensagens;
@@ -23,12 +23,20 @@ public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////ATRIBUTOS///////////////////////////////	
 	private static final long serialVersionUID = 1L;
+	Fachada fachada;
 	
 	private String login;
 	private String senha;
 	private Integer nivel;
 	private Usuario usuarioLogado;
-//////////////////////////////ATRIBUTOS///////////////////////////////	
+	
+//////////////////////////////ATRIBUTOS///////////////////////////////
+	
+//////////////////////////CONSTRUTOR/////////////////////////////////
+	public BeanAutenticacao(){
+		fachada = new Fachada();
+	}
+//////////////////////////CONSTRUTOR/////////////////////////////////
 	
 	
 //////////////////////////////MÉTODOS///////////////////////////////		
@@ -39,7 +47,8 @@ public class BeanAutenticacao implements Serializable{
 			try {
 				
 				if (getNivel() == 1) {
-					Cliente cliente = DAOFactory.getDaoCliente().buscarClientePorLoginSenha(getLogin(), getSenha());
+					
+					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), getSenha());
 					
 					if (cliente != null) {
 						
@@ -55,7 +64,8 @@ public class BeanAutenticacao implements Serializable{
 				
 				
 				if (getNivel() == 2) {
-					Operador operador = DAOFactory.getDaoOperador().buscaOperadorPorLoginSenhaNivel(getLogin(), getLogin(), NivelOperador.ADMINISTRATIVO);
+					
+					Operador operador = fachada.rnOperador.buscaOperadorPorLoginSenhaNivel(getLogin(), getSenha(), NivelOperador.ADMINISTRATIVO);
 					
 					if (operador != null) {
 
@@ -72,7 +82,9 @@ public class BeanAutenticacao implements Serializable{
 				
 				
 				if (getNivel() == 3) {
-					Operador operador = DAOFactory.getDaoOperador().buscaOperadorPorLoginSenhaNivel(getLogin(), getLogin(), NivelOperador.TECNICO);
+					
+					Operador operador = fachada.rnOperador.buscaOperadorPorLoginSenhaNivel(getLogin(), getSenha(), NivelOperador.TECNICO);
+					
 					if (operador != null) {
 						
 						Cookies.RegistraCookieLogin(operador.getCodigo(), getNivel());
@@ -103,6 +115,8 @@ public class BeanAutenticacao implements Serializable{
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
+	
+	
 //////////////////////////////MÉTODOS///////////////////////////////	
 	
 	
@@ -138,20 +152,23 @@ public class BeanAutenticacao implements Serializable{
 	public void setNivel(Integer nivel) {
 		this.nivel = nivel;
 	}
-
+	
 	public Usuario getUsuarioLogado() {
 		
-		if (Cookies.retornaNivelUsuarioLogado() == 1) {
-			usuarioLogado = DAOFactory.getDaoCliente().consultarPorId(Cookies.retornaIdUsuarioLogado());
+		if (Cookies.retornaNivelUsuarioLogado() == 1) {			
+			usuarioLogado = fachada.rnCliente.consultarPorId(Cookies.retornaIdUsuarioLogado());
 		}
 		
 		if (Cookies.retornaNivelUsuarioLogado() == 2 || Cookies.retornaNivelUsuarioLogado() == 3) {
-			usuarioLogado = DAOFactory.getDaoOperador().consultarPorId(Cookies.retornaIdUsuarioLogado());
+			usuarioLogado = fachada.rnOperador.consultarPorId(Cookies.retornaIdUsuarioLogado());
 		}
-		
 		
 		return usuarioLogado;
 	}
+
+	
+
+	
 	
 //////////////////////////////GET E SETS///////////////////////////////
 
