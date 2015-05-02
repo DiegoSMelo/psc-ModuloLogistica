@@ -1,9 +1,12 @@
 package domain.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
+import domain.basics.enums.SituacaoUsuario;
 import domain.basics.profile.Cliente;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
@@ -54,6 +57,20 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 			throw new DAOException(Mensagens.m2);
 		} 
 		
+	}
+
+	@Override
+	public List<Cliente> listarClientesPorSituacao(SituacaoUsuario situacao) throws DAOException {
+		
+		try {
+			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.situacaoUsuario = :situacao", Cliente.class);
+			result.setParameter("situacao", situacao);			
+			return result.getResultList();
+		}
+		catch (Exception e) {
+			
+			throw new DAOException(Mensagens.m4);
+		}
 	}
 
 	

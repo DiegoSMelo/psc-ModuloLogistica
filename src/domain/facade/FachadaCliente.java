@@ -1,13 +1,15 @@
 package domain.facade;
 
+import java.util.List;
+
+import domain.basics.enums.SituacaoUsuario;
 import domain.basics.profile.Cliente;
 import domain.exceptions.DAOException;
-import domain.rn.IRNCliente;
 import domain.rn.RNCliente;
 
 public class FachadaCliente {
 	
-	public IRNCliente rnCliente;
+	public RNCliente rnCliente;
 	
 	public FachadaCliente(){
 		rnCliente = new RNCliente();
@@ -24,5 +26,13 @@ public class FachadaCliente {
 	public Cliente consultarPorId(Long id) {
 		
 		return this.rnCliente.consultarPorId(id);
+	}
+	
+	public void deletar(Cliente cliente){
+		this.rnCliente.deletar(cliente);
+	}
+	
+	public List<Cliente> listaClientesPorSituacao(SituacaoUsuario situacao) throws DAOException {
+		return rnCliente.listaClientesPorSituacao(situacao);
 	}
 }

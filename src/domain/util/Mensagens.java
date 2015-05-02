@@ -15,4 +15,9 @@ public class Mensagens {
 	 * "Falha ao salvar"
 	 */
 	public static String m3 = "Falha ao salvar";
+	
+	/**
+	 * "Falha na listagem"
+	 */
+	public static String m4 = "Falha na listagem";
 }

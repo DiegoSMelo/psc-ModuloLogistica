@@ -1,10 +1,13 @@
 package domain.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import domain.basics.enums.NivelOperador;
+import domain.basics.enums.SituacaoUsuario;
 import domain.basics.profile.Operador;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
@@ -49,6 +52,18 @@ public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 			return null;
 		} catch (Exception e) {
 			throw new DAOException(Mensagens.m2);
+		}
+	}
+
+	@Override
+	public List<Operador> listaOperadoresPorSituacao(SituacaoUsuario situacao) throws DAOException {
+		
+		try {
+			TypedQuery<Operador> result = entityManager.createQuery("SELECT o FROM Operador o WHERE o.situacaoUsuario = :situacao", Operador.class);
+			result.setParameter("situacao", situacao);
+			return result.getResultList();
+		} catch (Exception e) {
+			throw new DAOException(Mensagens.m4);
 		}
 	}
 	

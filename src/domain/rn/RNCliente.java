@@ -1,32 +1,65 @@
 package domain.rn;
 
+import java.util.List;
+
+import domain.basics.enums.SituacaoUsuario;
 import domain.basics.profile.Cliente;
+import domain.dao.IDAOCliente;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.util.Criptografia;
 
-public class RNCliente implements IRNCliente{
+public class RNCliente{
 	
-	@Override
+	private IDAOCliente daoCliente;
+	
+	public RNCliente(){
+		this.daoCliente = DAOFactory.getDaoCliente();
+	}
+	
+
 	public void salvar(Cliente cliente) throws DAOException {
+		
 		cliente.setSenha(Criptografia.criptografarSenhas(cliente.getSenha()));
-		if (DAOFactory.getDaoCliente().buscarClientePorCNPJ(cliente.getCnpj()) == null) {
-			DAOFactory.getDaoCliente().inserir(cliente);
+		
+		if (this.daoCliente.buscarClientePorCNPJ(cliente.getCnpj()) == null) {
+			
+			cliente.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+			this.daoCliente.inserir(cliente);
+			
 		}else{
-			DAOFactory.getDaoCliente().alterar(cliente);
+			
+			this.daoCliente.alterar(cliente);
+			
 		}
 		
 	}
 	
-	@Override
+	
+	
 	public Cliente buscarClientePorLoginSenha(String login, String senha) throws DAOException {		
-		return DAOFactory.getDaoCliente().buscarClientePorLoginSenha(login, senha);
+		return this.daoCliente.buscarClientePorLoginSenha(login, senha);
 	}
 
-	@Override
+
 	public Cliente consultarPorId(Long id) {
 		
-		return DAOFactory.getDaoCliente().consultarPorId(id);
+		return this.daoCliente.consultarPorId(id);
+	}
+
+
+
+	public void deletar(Cliente cliente) {
+		
+		cliente.setSituacaoUsuario(SituacaoUsuario.INATIVO);
+		this.daoCliente.alterar(cliente);
+		
+	}
+
+
+	
+	public List<Cliente> listaClientesPorSituacao(SituacaoUsuario situacao) throws DAOException {
+		return this.daoCliente.listarClientesPorSituacao(situacao);
 	}
 
 	

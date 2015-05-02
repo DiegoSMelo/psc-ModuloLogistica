@@ -1,31 +1,56 @@
 package domain.rn;
 
+import java.util.List;
+
 import domain.basics.enums.NivelOperador;
+import domain.basics.enums.SituacaoUsuario;
 import domain.basics.profile.Operador;
+import domain.dao.IDAOOperador;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
+import domain.util.Criptografia;
 
-public class RNOperador implements IRNOperador{
+public class RNOperador{
 	
-	@Override
+	private IDAOOperador daoOperador;
+	
+	public RNOperador(){
+		this.daoOperador = DAOFactory.getDaoOperador();
+	}
+	
+
 	public void salvar(Operador operador) throws DAOException {
-		if (DAOFactory.getDaoOperador().buscaOperadorPorCPF(operador.getCpf()) == null) {
-			DAOFactory.getDaoOperador().inserir(operador);
+		operador.setSenha(Criptografia.criptografarSenhas(operador.getSenha()));
+		if (this.daoOperador.buscaOperadorPorCPF(operador.getCpf()) == null) {
+			operador.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+			this.daoOperador.inserir(operador);
 		}else{
-			DAOFactory.getDaoOperador().alterar(operador);
+			this.daoOperador.alterar(operador);
 		}	
 	}
 	
-	@Override
+
 	public Operador buscaOperadorPorLoginSenhaNivel(String login, String senha,
 			NivelOperador nivel) throws DAOException {
 		
-		return DAOFactory.getDaoOperador().buscaOperadorPorLoginSenhaNivel(login, senha, nivel);
+		return this.daoOperador.buscaOperadorPorLoginSenhaNivel(login, senha, nivel);
 	}
 
-	@Override
+
 	public Operador consultarPorId(Long id) {
-		return DAOFactory.getDaoOperador().consultarPorId(id);
+		return this.daoOperador.consultarPorId(id);
+	}
+
+
+	public void deletar(Operador operador) {
+		operador.setSituacaoUsuario(SituacaoUsuario.INATIVO);
+		this.daoOperador.alterar(operador);
+		
+	}
+
+	
+	public List<Operador> listarOperadoresPorSituacao(SituacaoUsuario situacao) throws DAOException {
+		return this.daoOperador.listaOperadoresPorSituacao(situacao);
 	}
 
 	
