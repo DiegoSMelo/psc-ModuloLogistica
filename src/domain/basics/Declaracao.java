@@ -49,6 +49,8 @@ public class Declaracao {
 	
 	
 	
+	
+	
 	public Long getCodigo() {
 		return Codigo;
 	}
