@@ -47,7 +47,17 @@ public class Declaracao {
 	
 	
 	
+	public boolean isEntrada(){
+		return this.getTipoDeclaracao().equals(TipoDeclaracao.ENTRADA);
+	}
 	
+	public boolean isSaida(){
+		return this.getTipoDeclaracao().equals(TipoDeclaracao.SAIDA);
+	}
+	
+	public boolean isDevolucao(){
+		return this.getTipoDeclaracao().equals(TipoDeclaracao.DEVOLUCAO);
+	}
 	
 	
 	

@@ -20,4 +20,11 @@ public class Mensagens {
 	 * "Falha na listagem"
 	 */
 	public static String m4 = "Falha na listagem";
+
+	/**
+	 * O ponto estratégico não suporta a quantidade de iten
+	 */
+	public static String m5 = "O ponto estratégico não suporta a quantidade de itens";
+	
+
 }
