@@ -2,6 +2,7 @@ package domain.rn;
 
 import domain.basics.ItemDeclaracao;
 import domain.basics.PontoEstrategico;
+import domain.basics.MedidasPontoEstrategico;
 import domain.dao.IDAODeclaracao;
 import domain.dao.IDAOPontoEstrategico;
 import domain.dao.factory.DAOFactory;
@@ -50,8 +51,10 @@ public class RNDeclaracao {
 	
 	
 	public Integer calcularQuantidadeDePrateleirasNecessarias(ItemDeclaracao itemDeclaracao){
-		Integer valor = 0;
-		//cálculo
-		return valor;
+		Integer quantidadePrateleiras = 0;
+		
+		quantidadePrateleiras = (int) Math.ceil((itemDeclaracao.getId().getItem().getVolume() * itemDeclaracao.getQuantidade()) / MedidasPontoEstrategico.volumePrateleira);
+		
+		return quantidadePrateleiras;
 	}
 }

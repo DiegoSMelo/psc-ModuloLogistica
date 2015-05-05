@@ -29,6 +29,12 @@ public class Item {
 	
 	
 	
+	
+	public Double getVolume(){
+		return this.getAltura() * this.getLargura() * this.getProfundidade();		
+	}
+	
+	
 	public Long getCodigo() {
 		return codigo;
 	}
