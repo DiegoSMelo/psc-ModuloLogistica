@@ -8,7 +8,11 @@ import domain.dao.IDAOCliente;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.util.Criptografia;
-
+/**
+ * 
+ * @author bruno
+ *
+ */
 public class RNCliente{
 	
 	private IDAOCliente daoCliente;

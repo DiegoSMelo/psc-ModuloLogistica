@@ -4,7 +4,11 @@ import java.io.Serializable;
 
 import javax.persistence.ManyToOne;
 
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 public class ItemDeclaracaoPK implements Serializable{
 
 	/**

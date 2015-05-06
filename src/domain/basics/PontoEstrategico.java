@@ -7,7 +7,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import domain.basics.profile.Endereco;
-
+/**
+ * 
+ * @author domenico
+ *
+ */
 @Entity
 public class PontoEstrategico {
 	

@@ -9,6 +9,11 @@ import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
 import domain.util.Mensagens;
 
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclaracao{
 
 	public DAODeclaracao(EntityManager em) {

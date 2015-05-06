@@ -12,7 +12,11 @@ import domain.basics.profile.Operador;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
 import domain.util.Mensagens;
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 
 	public DAOOperador(EntityManager em) {

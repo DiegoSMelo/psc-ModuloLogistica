@@ -12,6 +12,11 @@ import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
 import domain.util.Mensagens;
 
+/**
+ * 
+ * @author bruno
+ *
+ */
 public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 
 	public DAOCliente(EntityManager em) {

@@ -2,7 +2,11 @@ package domain.basics.profile;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
+/**
+ * 
+ * @author bruno
+ *
+ */
 @Entity
 public class Cliente extends Usuario{
 		

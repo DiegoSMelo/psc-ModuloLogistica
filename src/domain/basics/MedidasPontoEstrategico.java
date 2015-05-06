@@ -3,7 +3,7 @@ package domain.basics;
 /**
  * 
  * Classe para definir valores default dos pontos estratégicos.
- *
+ *	@author domenico
  */
 public class MedidasPontoEstrategico {
 	

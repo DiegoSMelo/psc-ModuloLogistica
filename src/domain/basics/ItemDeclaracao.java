@@ -4,7 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 @Entity
 public class ItemDeclaracao {
 	

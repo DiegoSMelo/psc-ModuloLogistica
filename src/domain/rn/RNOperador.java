@@ -9,7 +9,11 @@ import domain.dao.IDAOOperador;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.util.Criptografia;
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 public class RNOperador{
 	
 	private IDAOOperador daoOperador;

@@ -9,7 +9,11 @@ import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
 import domain.util.Mensagens;
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 public class RNDeclaracao {
 
 	private IDAODeclaracao daoDeclaracao;

@@ -4,7 +4,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 
 import domain.basics.enums.NivelOperador;
-
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 @Entity
 public class Operador extends Usuario{
 	

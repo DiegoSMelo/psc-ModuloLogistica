@@ -13,6 +13,11 @@ import javax.persistence.TemporalType;
 
 import domain.basics.enums.TipoDeclaracao;
 import domain.basics.profile.Cliente;
+/**
+ * 
+ * @author diego_melo
+ *
+ */
 
 @Entity
 public class Declaracao {
