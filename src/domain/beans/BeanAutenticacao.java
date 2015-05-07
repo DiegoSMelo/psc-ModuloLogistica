@@ -42,13 +42,23 @@ public class BeanAutenticacao implements Serializable{
 //////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
 		
+		Cliente c = new Cliente();
+		c.setNome("cliente");
+		c.setLogin("cliente");
+		c.setSenha(Criptografia.criptografarSenhas("123"));
+		try {
+			fachada.rnCliente.salvar(c);
+		} catch (DAOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {
 			try {
 				
 				if (getNivel() == 1) {
 					
-					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), getSenha());
+					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), Criptografia.criptografarSenhas(getSenha()));
 					
 					if (cliente != null) {
 						

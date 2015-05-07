@@ -7,6 +7,6 @@ package domain.basics;
  */
 public class MedidasPontoEstrategico {
 	
-	public static final Double volumePrateleira = 100.00; //em m³
+	public static final Double volumePrateleira = 1.00; //em m³
 
 }
