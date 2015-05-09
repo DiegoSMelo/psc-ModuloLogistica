@@ -1,5 +1,7 @@
 package domain.rn;
 
+import java.util.List;
+
 import domain.basics.PontoEstrategico;
 import domain.basics.enums.Situacao;
 import domain.dao.IDAOPontoEstrategico;
@@ -14,24 +16,33 @@ import domain.exceptions.DAOException;
 public class RNPontoEstrategico {
 
 	private IDAOPontoEstrategico daoPontoEstrategico;
-	
+
 	public RNPontoEstrategico(){
 		this.daoPontoEstrategico = DAOFactory.getDaoPontoEstrategico();
 	}
-	
-public void salvar(PontoEstrategico pontoEstrategico) throws DAOException {
-		
-		
-			
+
+	public void salvar(PontoEstrategico pontoEstrategico) throws DAOException {
+
 		if (this.daoPontoEstrategico.buscarPontoEstrategicoPorCNPJ(pontoEstrategico.getCnpj())== null) {
-			
+
 			pontoEstrategico.setSituacao(Situacao.ATIVO);
 			this.daoPontoEstrategico.inserir(pontoEstrategico);
-			
+
 		}else{
-			
+
 			this.daoPontoEstrategico.alterar(pontoEstrategico);
-			
+
 		}
-}
+	}
+
+	public void deletar(PontoEstrategico pontoEstrategico) {
+
+		pontoEstrategico.setSituacao(Situacao.INATIVO);
+		this.daoPontoEstrategico.alterar(pontoEstrategico);
+
+	}
+
+	public List<PontoEstrategico> listaPontoEstrategicoPorSituacao(Situacao situacao) throws DAOException {
+		return this.daoPontoEstrategico.listarPontosEstrategicosPorSituacao(situacao);
+	}
 }

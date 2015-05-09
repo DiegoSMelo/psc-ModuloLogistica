@@ -26,15 +26,15 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 
 	@Override
 	public Cliente buscarClientePorLoginSenha(String login, String senha) throws DAOException {
-		
+
 		try {
-			
+
 			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.login = :login AND c.senha = :senha", Cliente.class);
 			result.setParameter("login", login);
 			result.setParameter("senha", senha);
-			
+
 			Cliente cliente = result.getSingleResult();
-			
+
 			return cliente;
 		}catch (NoResultException e2) {
 			return null;
@@ -47,13 +47,13 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 	@Override
 	public Cliente buscarClientePorCNPJ(String cnpj) throws DAOException {
 		try {
-			
+
 			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.cnpj = :cnpj", Cliente.class);
 			result.setParameter("cnpj", cnpj);
-			
-			
+
+
 			Cliente cliente = result.getSingleResult();
-			
+
 			return cliente;
 		}catch (NoResultException e2) {
 			return null;
@@ -61,24 +61,24 @@ public class DAOCliente extends DAOGeneric<Cliente> implements IDAOCliente{
 		catch (Exception e) {
 			throw new DAOException(Mensagens.m2);
 		} 
-		
+
 	}
 
 	@Override
 	public List<Cliente> listarClientesPorSituacao(Situacao situacao) throws DAOException {
-		
+
 		try {
 			TypedQuery<Cliente> result = entityManager.createQuery("SELECT c FROM Cliente c WHERE c.situacaoUsuario = :situacao", Cliente.class);
 			result.setParameter("situacao", situacao);			
 			return result.getResultList();
 		}
 		catch (Exception e) {
-			
+
 			throw new DAOException(Mensagens.m4);
 		}
 	}
 
-	
-	
+
+
 
 }

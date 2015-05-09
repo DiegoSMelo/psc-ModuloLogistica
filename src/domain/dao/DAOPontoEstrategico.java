@@ -25,14 +25,14 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 
 	@Override
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException {
-		
+
 		try {
 			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.situacao = :situacao", PontoEstrategico.class);
 			result.setParameter("situacao", situacao);			
 			return result.getResultList();
 		}
 		catch (Exception e) {
-			
+
 			throw new DAOException(Mensagens.m4);
 		}
 	}
@@ -40,15 +40,15 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 	@Override
 	public PontoEstrategico buscarPontoEstrategicoPorCNPJ(String cnpj)
 			throws DAOException {
-		
-try {
-			
+
+		try {
+
 			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.cnpj = :cnpj", PontoEstrategico.class);
 			result.setParameter("cnpj", cnpj);
-			
-			
+
+
 			PontoEstrategico pontoEstrategico = result.getSingleResult();
-			
+
 			return pontoEstrategico;
 		}catch (NoResultException e2) {
 			return null;
