@@ -30,5 +30,10 @@ public class Mensagens {
 	 * Ponto estratégico não encontrado.
 	 */
 	public static String m6 = "Ponto estratégico não encontrado.";
+	
+	/**
+	 * Falha no Processo de deletar.
+	 */
+	public static String m7 = "Falha no processo de Deletar";
 
 }

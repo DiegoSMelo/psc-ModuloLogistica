@@ -83,7 +83,6 @@ public class BeanOperador {
 		return listaOperadores;
 	}
 
-
 	public void setListaOperadores(List<Operador> listaOperadores) {
 		this.listaOperadores = listaOperadores;
 	}
