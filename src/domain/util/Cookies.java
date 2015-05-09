@@ -49,13 +49,14 @@ public class Cookies {
 	    Map<String, Object> cookies = extContext.getRequestCookieMap();
 	    
 	    Cookie cookie = (Cookie) cookies.get("User");
+	    
 	    cookie.setValue(null);
-        cookie.setMaxAge(0);
+        cookie.setMaxAge(-1);
         response.addCookie(cookie);
         
         Cookie cookie2 = (Cookie) cookies.get("Nivel");
 	    cookie2.setValue(null);
-        cookie2.setMaxAge(0);
+        cookie2.setMaxAge(-1);
         response.addCookie(cookie2);
 	}
 }

@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
@@ -36,7 +36,7 @@ public abstract class Usuario {
 	private String senha;
 	
 	@Enumerated
-	private SituacaoUsuario situacaoUsuario;
+	private Situacao situacaoUsuario;
 	
 	
 	
@@ -83,10 +83,10 @@ public abstract class Usuario {
 	public void setSenha(String senha) {
 		this.senha = senha;
 	}
-	public SituacaoUsuario getSituacaoUsuario() {
+	public Situacao getSituacaoUsuario() {
 		return situacaoUsuario;
 	}
-	public void setSituacaoUsuario(SituacaoUsuario situacaoUsuario) {
+	public void setSituacaoUsuario(Situacao situacaoUsuario) {
 		this.situacaoUsuario = situacaoUsuario;
 	}
 	

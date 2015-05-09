@@ -2,8 +2,11 @@ package domain.basics;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+
+import domain.basics.enums.Situacao;
 /**
  * 
  * @author gustavo
@@ -30,7 +33,8 @@ public class Item {
 	@Column(nullable=false)
 	private Double peso;
 	
-	
+	@Enumerated
+	private Situacao situacao;
 	
 	
 	
@@ -74,6 +78,16 @@ public class Item {
 	}
 	public void setPeso(Double peso) {
 		this.peso = peso;
+	}
+
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 	
 	

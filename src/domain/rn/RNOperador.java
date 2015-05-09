@@ -3,7 +3,7 @@ package domain.rn;
 import java.util.List;
 
 import domain.basics.enums.NivelOperador;
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Operador;
 import domain.dao.IDAOOperador;
 import domain.dao.factory.DAOFactory;
@@ -26,7 +26,7 @@ public class RNOperador{
 	public void salvar(Operador operador) throws DAOException {
 		operador.setSenha(Criptografia.criptografarSenhas(operador.getSenha()));
 		if (this.daoOperador.buscaOperadorPorCPF(operador.getCpf()) == null) {
-			operador.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+			operador.setSituacaoUsuario(Situacao.ATIVO);
 			this.daoOperador.inserir(operador);
 		}else{
 			this.daoOperador.alterar(operador);
@@ -47,13 +47,13 @@ public class RNOperador{
 
 
 	public void deletar(Operador operador) {
-		operador.setSituacaoUsuario(SituacaoUsuario.INATIVO);
+		operador.setSituacaoUsuario(Situacao.INATIVO);
 		this.daoOperador.alterar(operador);
 		
 	}
 
 	
-	public List<Operador> listarOperadoresPorSituacao(SituacaoUsuario situacao) throws DAOException {
+	public List<Operador> listarOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoOperador.listaOperadoresPorSituacao(situacao);
 	}
 

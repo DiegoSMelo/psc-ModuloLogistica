@@ -13,7 +13,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebFilter(filterName = "FiltroControleAcesso", urlPatterns = {"/index.xhtml"})
+@WebFilter(filterName = "FiltroControleAcesso", urlPatterns = {"/home/*"})
 public class FiltroControleAcesso implements Filter{
 
 	

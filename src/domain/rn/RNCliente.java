@@ -2,7 +2,7 @@ package domain.rn;
 
 import java.util.List;
 
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Cliente;
 import domain.dao.IDAOCliente;
 import domain.dao.factory.DAOFactory;
@@ -28,7 +28,7 @@ public class RNCliente{
 		
 		if (this.daoCliente.buscarClientePorCNPJ(cliente.getCnpj()) == null) {
 			
-			cliente.setSituacaoUsuario(SituacaoUsuario.ATIVO);
+			cliente.setSituacaoUsuario(Situacao.ATIVO);
 			this.daoCliente.inserir(cliente);
 			
 		}else{
@@ -55,14 +55,14 @@ public class RNCliente{
 
 	public void deletar(Cliente cliente) {
 		
-		cliente.setSituacaoUsuario(SituacaoUsuario.INATIVO);
+		cliente.setSituacaoUsuario(Situacao.INATIVO);
 		this.daoCliente.alterar(cliente);
 		
 	}
 
 
 	
-	public List<Cliente> listaClientesPorSituacao(SituacaoUsuario situacao) throws DAOException {
+	public List<Cliente> listaClientesPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoCliente.listarClientesPorSituacao(situacao);
 	}
 

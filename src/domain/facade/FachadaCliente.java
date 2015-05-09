@@ -2,7 +2,7 @@ package domain.facade;
 
 import java.util.List;
 
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Cliente;
 import domain.exceptions.DAOException;
 import domain.rn.RNCliente;
@@ -32,7 +32,7 @@ public class FachadaCliente {
 		this.rnCliente.deletar(cliente);
 	}
 	
-	public List<Cliente> listaClientesPorSituacao(SituacaoUsuario situacao) throws DAOException {
+	public List<Cliente> listaClientesPorSituacao(Situacao situacao) throws DAOException {
 		return rnCliente.listaClientesPorSituacao(situacao);
 	}
 }

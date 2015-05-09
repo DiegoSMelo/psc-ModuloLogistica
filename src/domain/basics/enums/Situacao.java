@@ -1,5 +1,5 @@
 package domain.basics.enums;
 
-public enum SituacaoUsuario {
+public enum Situacao {
  ATIVO, INATIVO
 }

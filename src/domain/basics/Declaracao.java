@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import domain.basics.enums.Situacao;
 import domain.basics.enums.TipoDeclaracao;
 import domain.basics.profile.Cliente;
 /**
@@ -48,7 +49,8 @@ public class Declaracao {
 	@ManyToOne
 	private Cliente cliente;
 	
-	
+	@Enumerated
+	private Situacao situacao;
 	
 	
 	
@@ -113,6 +115,14 @@ public class Declaracao {
 	}
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
+	}
+
+	public Situacao getSituacao() {
+		return situacao;
+	}
+
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 	
 	

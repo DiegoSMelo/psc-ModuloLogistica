@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Endereco;
 /**
  * 
@@ -33,6 +34,7 @@ public class PontoEstrategico {
 	@Column(nullable=false)
 	private Integer capacidadeAtualDePrateleiras;
 	
+	private Situacao situacao;
 	
 	
 	
@@ -83,6 +85,12 @@ public class PontoEstrategico {
 	}
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+	public Situacao getSituacao() {
+		return situacao;
+	}
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
 	}
 	
 	

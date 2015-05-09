@@ -7,7 +7,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import domain.basics.enums.NivelOperador;
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Operador;
 import domain.dao.generics.DAOGeneric;
 import domain.exceptions.DAOException;
@@ -60,7 +60,7 @@ public class DAOOperador extends DAOGeneric<Operador> implements IDAOOperador{
 	}
 
 	@Override
-	public List<Operador> listaOperadoresPorSituacao(SituacaoUsuario situacao) throws DAOException {
+	public List<Operador> listaOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		
 		try {
 			TypedQuery<Operador> result = entityManager.createQuery("SELECT o FROM Operador o WHERE o.situacaoUsuario = :situacao", Operador.class);

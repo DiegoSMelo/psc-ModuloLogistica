@@ -3,7 +3,7 @@ package domain.facade;
 import java.util.List;
 
 import domain.basics.enums.NivelOperador;
-import domain.basics.enums.SituacaoUsuario;
+import domain.basics.enums.Situacao;
 import domain.basics.profile.Operador;
 import domain.exceptions.DAOException;
 import domain.rn.RNOperador;
@@ -34,7 +34,7 @@ public RNOperador rnOperador;
 	}
 
 	
-	public List<Operador> listarOperadoresPorSituacao(SituacaoUsuario situacao) throws DAOException {
+	public List<Operador> listarOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		return rnOperador.listarOperadoresPorSituacao(situacao);
 	}
 
