@@ -36,8 +36,16 @@ public class PontoEstrategico {
 	
 	private Situacao situacao;
 	
+	@Column(unique=true)
+	private String cnpj;
 	
 	
+	public String getCnpj() {
+		return cnpj;
+	}
+	public void setCnpj(String cnpj) {
+		this.cnpj = cnpj;
+	}
 	public Integer getCapacidadeTotalDePreteleiras() {
 		return capacidadeTotalDePreteleiras;
 	}
