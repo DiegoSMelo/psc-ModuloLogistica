@@ -21,7 +21,6 @@ public class RNOperador{
 	public RNOperador(){
 		this.daoOperador = DAOFactory.getDaoOperador();
 	}
-	
 
 	public void salvar(Operador operador) throws DAOException {
 		operador.setSenha(Criptografia.criptografarSenhas(operador.getSenha()));

@@ -7,7 +7,6 @@ import domain.basics.enums.Situacao;
 import domain.dao.IDAOPontoEstrategico;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
-
 /**
  * 
  * @author domenico
@@ -42,7 +41,12 @@ public class RNPontoEstrategico {
 
 	}
 
-	public List<PontoEstrategico> listaPontoEstrategicoPorSituacao(Situacao situacao) throws DAOException {
+
+	public PontoEstrategico buscarPontoEstrategicoPorCNPJ(String cnpj) throws DAOException {
+		return this.daoPontoEstrategico.buscarPontoEstrategicoPorCNPJ(cnpj);
+	}
+
+	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoPontoEstrategico.listarPontosEstrategicosPorSituacao(situacao);
 	}
 }
