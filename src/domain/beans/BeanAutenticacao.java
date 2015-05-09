@@ -41,19 +41,7 @@ public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
-		/*
-		Cliente c = new Cliente();
-		c.setNome("cliente");
-		c.setLogin("cliente");
-		c.setSenha(Criptografia.criptografarSenhas("123"));
 	
-		try {
-			fachada.rnCliente.salvar(c);
-		} catch (DAOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
-			*/
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {
 			try {
@@ -121,7 +109,7 @@ public class BeanAutenticacao implements Serializable{
 	public void logoff(){
 		try {
 			Cookies.destroiCookie();
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/home/index.xhtml");
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/login.xhtml");
 		} catch (IOException e) {
 		
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");

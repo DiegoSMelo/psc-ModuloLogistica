@@ -3,7 +3,7 @@
   <display-name>psc-ModuloLogistica</display-name>
  
   <welcome-file-list>
-  	<welcome-file>home/index.xhtml</welcome-file>
+  	<welcome-file>login.xhtml</welcome-file>
   </welcome-file-list>
  
   <servlet>

@@ -11,7 +11,7 @@ import domain.util.Mensagens;
 
 @ManagedBean
 public class BeanCliente {
-	Fachada fachada;
+	private Fachada fachada;
 	private Cliente cliente;
 	
 	
