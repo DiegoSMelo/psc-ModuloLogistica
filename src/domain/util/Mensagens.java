@@ -26,5 +26,9 @@ public class Mensagens {
 	 */
 	public static String m5 = "O ponto estratégico não suporta a quantidade de itens";
 	
+	/**
+	 * Ponto estratégico não encontrado.
+	 */
+	public static String m6 = "Ponto estratégico não encontrado.";
 
 }

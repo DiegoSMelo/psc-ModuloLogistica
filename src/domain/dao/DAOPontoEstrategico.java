@@ -3,6 +3,7 @@ package domain.dao;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.TypedQuery;
 
 import domain.basics.PontoEstrategico;
@@ -26,7 +27,7 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException {
 		
 		try {
-			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstartegico p WHERE p.situacao = :situacao", PontoEstrategico.class);
+			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.situacao = :situacao", PontoEstrategico.class);
 			result.setParameter("situacao", situacao);			
 			return result.getResultList();
 		}
@@ -34,6 +35,27 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 			
 			throw new DAOException(Mensagens.m4);
 		}
+	}
+
+	@Override
+	public PontoEstrategico buscarPontoEstrategicoPorCNPJ(String cnpj)
+			throws DAOException {
+		
+try {
+			
+			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.cnpj = :cnpj", PontoEstrategico.class);
+			result.setParameter("cnpj", cnpj);
+			
+			
+			PontoEstrategico pontoEstrategico = result.getSingleResult();
+			
+			return pontoEstrategico;
+		}catch (NoResultException e2) {
+			return null;
+		} 
+		catch (Exception e) {
+			throw new DAOException(Mensagens.m6);
+		} 
 	}
 
 }

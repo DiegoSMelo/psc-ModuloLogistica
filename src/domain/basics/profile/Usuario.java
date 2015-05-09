@@ -23,8 +23,7 @@ public abstract class Usuario {
 	
 	@Embedded
 	private Endereco endereco;
-	
-	
+		
 	private String telefone;
 	
 	@Column(unique=true)
@@ -32,6 +31,7 @@ public abstract class Usuario {
 	
 	@Column(unique=true, nullable=false)
 	private String login;
+	
 	@Column(nullable=false)
 	private String senha;
 	
