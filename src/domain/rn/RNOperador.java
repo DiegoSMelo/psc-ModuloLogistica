@@ -55,6 +55,10 @@ public class RNOperador{
 	public List<Operador> listarOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoOperador.listaOperadoresPorSituacao(situacao);
 	}
+	
+	public List<Operador> listarTodosOperadores(){
+		return this.daoOperador.consultarTodos();
+	}
 
 	
 
