@@ -37,7 +37,7 @@ public class FiltroControleAcesso implements Filter{
 		
 		 if (cookies != null) {
 			for (Cookie cookie : cookies) {
-				if ("User".equals(cookie.getName())) {
+				if ("User".equals(cookie.getName()) && !cookie.getValue().equals("")) {
 					gat = 1;
 				}
 			}

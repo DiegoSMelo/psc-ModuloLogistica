@@ -1,4 +1,4 @@
-package domain.beans;
+package domain.beans.autenticacao;
 
 import java.io.IOException;
 import java.io.Serializable;
@@ -41,7 +41,6 @@ public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
-	
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {
 			try {

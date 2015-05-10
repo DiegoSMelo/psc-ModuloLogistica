@@ -23,14 +23,19 @@ public class RNOperador{
 	}
 
 	public void salvar(Operador operador) throws DAOException {
-		operador.setSenha(Criptografia.criptografarSenhas(operador.getSenha()));
+		
 		if (this.daoOperador.buscaOperadorPorCPF(operador.getCpf()) == null) {
+			operador.setSenha(Criptografia.criptografarSenhas(operador.getSenha()));
 			operador.setSituacaoUsuario(Situacao.ATIVO);
 			this.daoOperador.inserir(operador);
 		}else{
+		
+			
+			
 			this.daoOperador.alterar(operador);
 		}	
 	}
+	
 	
 
 	public Operador buscaOperadorPorLoginSenhaNivel(String login, String senha,
@@ -54,6 +59,10 @@ public class RNOperador{
 	
 	public List<Operador> listarOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoOperador.listaOperadoresPorSituacao(situacao);
+	}
+	
+	public List<Operador> listarTodosOperadores(){
+		return this.daoOperador.consultarTodos();
 	}
 
 	

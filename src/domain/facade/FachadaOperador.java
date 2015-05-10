@@ -37,5 +37,9 @@ public RNOperador rnOperador;
 	public List<Operador> listarOperadoresPorSituacao(Situacao situacao) throws DAOException {
 		return rnOperador.listarOperadoresPorSituacao(situacao);
 	}
+	
+	public List<Operador> listarTodosOperadores(){
+		return rnOperador.listarTodosOperadores();
+	}
 
 }
