@@ -39,7 +39,9 @@ public abstract class Usuario {
 	private Situacao situacaoUsuario;
 	
 	
-	
+	public boolean isAtivo(){
+		return situacaoUsuario.equals(Situacao.ATIVO);
+	}
 	
 	public Long getCodigo() {
 		return codigo;

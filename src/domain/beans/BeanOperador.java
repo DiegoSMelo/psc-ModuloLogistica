@@ -27,7 +27,7 @@ import domain.util.Mensagens;
 @ManagedBean
 @SessionScoped
 public class BeanOperador {
-	private Operador operador = new Operador();
+	private Operador operador;
 	private List<Operador> listaOperadores;
 	private String filtroSituacao;
 	private Fachada fachada;
@@ -35,13 +35,15 @@ public class BeanOperador {
 	
 	
 	public BeanOperador(){
-		
+		this.operador = new Operador();
 		this.fachada = new Fachada();
 	}
 	
 	
 	public void salvarOperador(){
 		try {
+			
+			
 			
 			this.fachada.rnOperador.salvar(getOperador());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/index.xhtml");
@@ -66,7 +68,7 @@ public class BeanOperador {
 	
 	public void redirectEdit(){
 		try {
-			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/edit.xhtml");
+				FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/edit.xhtml");	
 			
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
@@ -78,14 +80,19 @@ public class BeanOperador {
 	public void alteraSituacao(){
 		
 		try {
-			if (this.operador.getSituacaoUsuario() == Situacao.ATIVO) {
-				this.operador.setSituacaoUsuario(Situacao.INATIVO);
-			}else{
-				this.operador.setSituacaoUsuario(Situacao.ATIVO);
-			}
-			fachada.rnOperador.salvar(operador);
+			Long codigo = Long.parseLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("operadorCodigo"));
+			Operador op = fachada.rnOperador.consultarPorId(codigo);
 			
+			if (op.isAtivo()) {
+				op.setSituacaoUsuario(Situacao.INATIVO);
+			}else{
+				op.setSituacaoUsuario(Situacao.ATIVO);
+			}
+			fachada.rnOperador.salvar(op);
+		
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/index.xhtml");
+			
+			
 		} catch (DAOException e) {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		} catch (IOException e) {

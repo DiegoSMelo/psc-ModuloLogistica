@@ -49,7 +49,7 @@ public class BeanAutenticacao implements Serializable{
 					
 					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), Criptografia.criptografarSenhas(getSenha()));
 					
-					if (cliente != null) {
+					if (cliente != null && cliente.isAtivo()) {
 						
 						Cookies.RegistraCookieLogin(cliente.getCodigo(), getNivel());
 						
@@ -66,7 +66,7 @@ public class BeanAutenticacao implements Serializable{
 					
 					Operador operador = fachada.rnOperador.buscaOperadorPorLoginSenhaNivel(getLogin(), getSenha(), NivelOperador.ADMINISTRATIVO);
 					
-					if (operador != null) {
+					if (operador != null && operador.isAtivo()) {
 
 						Cookies.RegistraCookieLogin(operador.getCodigo(), getNivel());
 						
@@ -84,7 +84,7 @@ public class BeanAutenticacao implements Serializable{
 					
 					Operador operador = fachada.rnOperador.buscaOperadorPorLoginSenhaNivel(getLogin(), getSenha(), NivelOperador.TECNICO);
 					
-					if (operador != null) {
+					if (operador != null && operador.isAtivo()) {
 						
 						Cookies.RegistraCookieLogin(operador.getCodigo(), getNivel());
 						

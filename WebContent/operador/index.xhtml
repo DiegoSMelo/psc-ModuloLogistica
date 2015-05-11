@@ -74,9 +74,6 @@ template="#{beanGeral.template}">
 		<h:commandLink styleClass="btn btn-success btn-acoes"  rendered="#{operador.situacaoUsuario eq 'INATIVO'}"   actionListener="#{beanOperador.alteraSituacao}" immediate="true">
 			 <f:param value="#{operador.codigo}" name="operadorCodigo"/>
 			Ativar
-			
-
-
 		</h:commandLink>
 		
 
@@ -84,8 +81,6 @@ template="#{beanGeral.template}">
 		<h:commandLink styleClass="btn btn-danger btn-acoes" rendered="#{operador.situacaoUsuario eq 'ATIVO'}" actionListener="#{beanOperador.alteraSituacao}" immediate="true">
 			Desativar
 			<f:param value="#{operador.codigo}" name="operadorCodigo"/>
-
-
 		</h:commandLink>
 		
 		
