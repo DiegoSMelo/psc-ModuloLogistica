@@ -35,4 +35,7 @@ public class FachadaCliente {
 	public List<Cliente> listaClientesPorSituacao(Situacao situacao) throws DAOException {
 		return rnCliente.listaClientesPorSituacao(situacao);
 	}
+	public List<Cliente> listarTodosClientes(){
+		return rnCliente.listarTodosClientes();
+	}
 }

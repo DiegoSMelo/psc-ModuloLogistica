@@ -24,10 +24,10 @@ public class RNCliente{
 
 	public void salvar(Cliente cliente) throws DAOException {
 
-		cliente.setSenha(Criptografia.criptografarSenhas(cliente.getSenha()));
+		
 
 		if (this.daoCliente.buscarClientePorCNPJ(cliente.getCnpj()) == null) {
-
+			cliente.setSenha(Criptografia.criptografarSenhas(cliente.getSenha()));
 			cliente.setSituacaoUsuario(Situacao.ATIVO);
 			this.daoCliente.inserir(cliente);
 
@@ -56,6 +56,10 @@ public class RNCliente{
 
 	public List<Cliente> listaClientesPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoCliente.listarClientesPorSituacao(situacao);
+	}
+	
+	public List<Cliente> listarTodosClientes(){
+		return this.daoCliente.consultarTodos();
 	}
 
 }
