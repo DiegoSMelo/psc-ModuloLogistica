@@ -66,6 +66,7 @@ template="#{beanGeral.template}">
 		</h:commandLink>
 		
 
+
 	
 		
 		
@@ -75,12 +76,15 @@ template="#{beanGeral.template}">
 			Ativar
 			
 
+
 		</h:commandLink>
 		
+
 
 		<h:commandLink styleClass="btn btn-danger btn-acoes" rendered="#{operador.situacaoUsuario eq 'ATIVO'}" actionListener="#{beanOperador.alteraSituacao}" immediate="true">
 			Desativar
 			<f:param value="#{operador.codigo}" name="operadorCodigo"/>
+
 
 		</h:commandLink>
 		
