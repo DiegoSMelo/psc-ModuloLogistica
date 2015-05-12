@@ -20,9 +20,8 @@ import domain.util.Mensagens;
 @ManagedBean
 @SessionScoped
 public class BeanCliente {
-	private Fachada fachada;
 	
-
+	private Fachada fachada;
 	private Cliente cliente;
 	private List<Cliente> listaClientes;
 	private String filtroSituacao;
@@ -63,6 +62,31 @@ public class BeanCliente {
 			
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
+		}
+	}
+	
+	
+	public void alteraSituacao(){
+		
+		try {
+			Long codigo = Long.parseLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("clienteCodigo"));
+			RequestContext.getCurrentInstance().execute("alert('" + codigo.toString() + "');");
+			Cliente cli = fachada.rnCliente.consultarPorId(codigo);
+			
+			if (cli.isAtivo()) {
+				cli.setSituacaoUsuario(Situacao.INATIVO);
+			}else{
+				cli.setSituacaoUsuario(Situacao.ATIVO);
+			}
+			fachada.rnCliente.salvar(cli);
+		
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/clientes/index.xhtml");
+			
+			
+		} catch (DAOException e) {
+			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
+		} catch (IOException e) {
+			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
 	}
 	

@@ -47,7 +47,7 @@ public class BeanAutenticacao implements Serializable{
 				
 				if (getNivel() == 1) {
 					
-					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), Criptografia.criptografarSenhas(getSenha()));
+					Cliente cliente = fachada.rnCliente.buscarClientePorLoginSenha(getLogin(), getSenha());
 					
 					if (cliente != null && cliente.isAtivo()) {
 						

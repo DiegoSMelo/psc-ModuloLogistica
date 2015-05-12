@@ -43,20 +43,23 @@ public class Cookies {
 	
 	
 	public static void destroiCookie(){
+		
 		FacesContext ctx = FacesContext.getCurrentInstance();
 	    ExternalContext extContext = ctx.getExternalContext();
 	    HttpServletResponse response = (HttpServletResponse) extContext.getResponse();
 	    Map<String, Object> cookies = extContext.getRequestCookieMap();
-	    
+    
 	    Cookie cookie = (Cookie) cookies.get("User");
 	    cookie.setValue("");
-        cookie.setMaxAge(0);
+        cookie.setMaxAge(-1);
         response.addCookie(cookie);
+        
         
         Cookie cookie2 = (Cookie) cookies.get("Nivel");
 	    cookie2.setValue("");
-        cookie2.setMaxAge(0);
+        cookie2.setMaxAge(-1);
         response.addCookie(cookie2);
-        
+       
+   
 	}
 }

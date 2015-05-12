@@ -23,9 +23,7 @@ public class RNCliente{
 
 
 	public void salvar(Cliente cliente) throws DAOException {
-
 		
-
 		if (this.daoCliente.buscarClientePorCNPJ(cliente.getCnpj()) == null) {
 			cliente.setSenha(Criptografia.criptografarSenhas(cliente.getSenha()));
 			cliente.setSituacaoUsuario(Situacao.ATIVO);
