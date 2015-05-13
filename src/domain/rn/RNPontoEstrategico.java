@@ -24,7 +24,7 @@ public class RNPontoEstrategico {
 
 		if (this.daoPontoEstrategico.buscarPontoEstrategicoPorCNPJ(pontoEstrategico.getCnpj())== null) {
 
-			pontoEstrategico.setSituacao(Situacao.ATIVO);
+			pontoEstrategico.setSituacaoPontoEstrategico(Situacao.ATIVO);
 			this.daoPontoEstrategico.inserir(pontoEstrategico);
 
 		}else{
@@ -36,7 +36,7 @@ public class RNPontoEstrategico {
 
 	public void deletar(PontoEstrategico pontoEstrategico) {
 
-		pontoEstrategico.setSituacao(Situacao.INATIVO);
+		pontoEstrategico.setSituacaoPontoEstrategico(Situacao.INATIVO);
 		this.daoPontoEstrategico.alterar(pontoEstrategico);
 
 	}
@@ -49,4 +49,12 @@ public class RNPontoEstrategico {
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException {
 		return this.daoPontoEstrategico.listarPontosEstrategicosPorSituacao(situacao);
 	}
+	public List<PontoEstrategico> listarTodosPontosEstrategicos(){
+		return this.daoPontoEstrategico.consultarTodos();
+	}
+
+	public PontoEstrategico consultarPorId(Long id) {
+		return this.daoPontoEstrategico.consultarPorId(id);
+	}
+	
 }

@@ -16,4 +16,5 @@ public interface IDAOPontoEstrategico extends IDAOGeneric<PontoEstrategico>{
 
 	public PontoEstrategico buscarPontoEstrategicoPorCNPJ(String cnpj) throws DAOException;
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException;
+	
 }

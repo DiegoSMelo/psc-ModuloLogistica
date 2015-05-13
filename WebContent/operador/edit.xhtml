@@ -1,131 +1,160 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-xmlns:ui="http://java.sun.com/jsf/facelets"
-xmlns:h="http://java.sun.com/jsf/html"
-xmlns:f="http://java.sun.com/jsf/core"
-xmlns:p="http://primefaces.org/ui"
-template="#{beanGeral.template}">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="#{beanGeral.template}">
 	<ui:define name="body">
 
 
 
 
 
-<ol class="breadcrumb">
-  <li><h:outputLink value="/psc-ModuloLogistica/home/index.xhtml">Página Inicial</h:outputLink></li>
-  <li><h:outputLink value="/psc-ModuloLogistica/operador/index.xhtml">Operador</h:outputLink></li>
-  <li class="active"><h:outputText value="#{beanOperador.operador.nome}"></h:outputText> - Editar</li>
-</ol>
-		
-		
-		
-		
-<h:form styleClass="form-horizontal" prependId="false">
-	
- <div class="form-group">
-   <h:outputLabel value="Nível" for="selectNivel"  styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-    	<h:selectOneMenu required="true" tabindex="1" requiredMessage="Escolha o nível de operador" styleClass="form-control" id="selectNivel" value="#{beanOperador.operador.nivelOperador}">
-    		<f:selectItems value="#{beanOperador.listaNiveis}"></f:selectItems>
-    	</h:selectOneMenu>
-    	<h:message styleClass="text-danger" for="selectNivel"></h:message>
-    </div>
-  </div>
-
-  
-  <div class="form-group">
-   <h:outputLabel value="Nome" for="inputNome" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="2" requiredMessage="Digite seu nome" styleClass="form-control" id="inputNome" value="#{beanOperador.operador.nome}"></h:inputText>
+		<ol class="breadcrumb">
+			<li><h:outputLink value="/psc-ModuloLogistica/home/index.xhtml">Página Inicial</h:outputLink></li>
+			<li><h:outputLink
+					value="/psc-ModuloLogistica/operador/index.xhtml">Operador</h:outputLink></li>
+			<li class="active"><h:outputText
+					value="#{beanOperador.operador.nome}"></h:outputText> - Editar</li>
+		</ol>
 
 
 
-      <h:message styleClass="text-danger" for="inputNome"></h:message>
-    </div>
-  </div>
-	
-	
- <div class="form-group">
-   <h:outputLabel value="Logradouro" for="inputLogradouro" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="3" requiredMessage="Digite o logradouro" styleClass="form-control" id="inputLogradouro" value="#{beanOperador.operador.endereco.logradouro}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputLogradouro"></h:message>
-    </div>
-  </div>
-  
-  <div class="form-group">
-   <h:outputLabel value="Cidade" for="inputCidade" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="4" requiredMessage="Digite a sua cidade" styleClass="form-control" id="inputCidade" value="#{beanOperador.operador.endereco.cidade}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputCidade"></h:message>
-    </div>
-  </div>
-  
-  <div class="form-group">
-   <h:outputLabel value="Bairro" for="inputBairro" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="5" requiredMessage="Digite o seu bairro" styleClass="form-control" id="inputBairro" value="#{beanOperador.operador.endereco.bairro}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputBairro"></h:message>
-    </div>
-  </div>
- 
- <div class="form-group">
-   <h:outputLabel value="Número" for="inputNumero" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText styleClass="form-control" tabindex="6" id="inputNumero" value="#{beanOperador.operador.endereco.numero}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputNumero"></h:message>
-    </div>
-  </div>
+		<h:form styleClass="form-horizontal" prependId="false">
 
- <div class="form-group">
-   <h:outputLabel value="CEP" for="inputCep" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="7" requiredMessage="Digite o seu CEP" styleClass="form-control" id="inputCep" value="#{beanOperador.operador.endereco.cep}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputCep"></h:message>
-    </div>
-  </div>
-  
-  
-  <div class="form-group">
-   <h:outputLabel value="UF" for="selectUf"  styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-    	<h:selectOneMenu required="true" tabindex="8" requiredMessage="Escolha a sua UF" styleClass="form-control" id="selectUf" value="#{beanOperador.operador.endereco.uf}">
-    		<f:selectItems value="#{beanOperador.listaUf}"></f:selectItems>
-    	</h:selectOneMenu>
-    	<h:message styleClass="text-danger" for="selectUf"></h:message>
-    </div>
-  </div>
-  
-  
-  
-  
-  
-  <div class="form-group">  
-    <h:outputLabel value="CPF" for="inputCpf" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText required="true" tabindex="9" requiredMessage="Digite o seu CPF" styleClass="form-control" id="inputCpf" value="#{beanOperador.operador.cpf}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputCpf"></h:message>
-    </div>
-  </div>
-  
-   <div class="form-group">
-   <h:outputLabel value="E-mail" for="inputEmail" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText styleClass="form-control" tabindex="10" id="inputEmail" value="#{beanOperador.operador.email}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputEmail"></h:message>
-    </div>
-  </div>
-  
-   <div class="form-group">
-   <h:outputLabel value="Telefone" for="inputTelefone" styleClass="col-sm-2 control-label"></h:outputLabel>
-    <div class="col-sm-10">
-      <h:inputText styleClass="form-control" tabindex="11" id="inputTelefone" value="#{beanOperador.operador.telefone}"></h:inputText>
-      <h:message styleClass="text-danger" for="inputTelefone"></h:message>
-    </div>
-  </div>
-  
-  
-  
-  <!-- 
+			<div class="form-group">
+				<h:outputLabel value="Nível" for="selectNivel"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:selectOneMenu required="true" tabindex="1"
+						requiredMessage="Escolha o nível de operador"
+						styleClass="form-control" id="selectNivel"
+						value="#{beanOperador.operador.nivelOperador}">
+						<f:selectItems value="#{beanOperador.listaNiveis}"></f:selectItems>
+					</h:selectOneMenu>
+					<h:message styleClass="text-danger" for="selectNivel"></h:message>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<h:outputLabel value="Nome" for="inputNome"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="2"
+						requiredMessage="Digite seu nome" styleClass="form-control"
+						id="inputNome" value="#{beanOperador.operador.nome}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputNome"></h:message>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<h:outputLabel value="Logradouro" for="inputLogradouro"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="3"
+						requiredMessage="Digite o logradouro" styleClass="form-control"
+						id="inputLogradouro"
+						value="#{beanOperador.operador.endereco.logradouro}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputLogradouro"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Cidade" for="inputCidade"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="4"
+						requiredMessage="Digite a sua cidade" styleClass="form-control"
+						id="inputCidade" value="#{beanOperador.operador.endereco.cidade}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputCidade"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Bairro" for="inputBairro"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="5"
+						requiredMessage="Digite o seu bairro" styleClass="form-control"
+						id="inputBairro" value="#{beanOperador.operador.endereco.bairro}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputBairro"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Número" for="inputNumero"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText styleClass="form-control" tabindex="6"
+						id="inputNumero" value="#{beanOperador.operador.endereco.numero}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputNumero"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="CEP" for="inputCep"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="7"
+						requiredMessage="Digite o seu CEP" styleClass="form-control"
+						id="inputCep" value="#{beanOperador.operador.endereco.cep}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputCep"></h:message>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<h:outputLabel value="UF" for="selectUf"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:selectOneMenu required="true" tabindex="8"
+						requiredMessage="Escolha a sua UF" styleClass="form-control"
+						id="selectUf" value="#{beanOperador.operador.endereco.uf}">
+						<f:selectItems value="#{beanOperador.listaUf}"></f:selectItems>
+					</h:selectOneMenu>
+					<h:message styleClass="text-danger" for="selectUf"></h:message>
+				</div>
+			</div>
+
+
+
+
+
+			<div class="form-group">
+				<h:outputLabel value="CPF" for="inputCpf"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="9"
+						requiredMessage="Digite o seu CPF" styleClass="form-control"
+						id="inputCpf" value="#{beanOperador.operador.cpf}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputCpf"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="E-mail" for="inputEmail"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText styleClass="form-control" tabindex="10"
+						id="inputEmail" value="#{beanOperador.operador.email}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputEmail"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Telefone" for="inputTelefone"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText styleClass="form-control" tabindex="11"
+						id="inputTelefone" value="#{beanOperador.operador.telefone}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputTelefone"></h:message>
+				</div>
+			</div>
+
+
+
+			<!-- 
   <div class="form-group">
    <h:outputLabel value="Login" for="inputLogin" styleClass="col-sm-2 control-label"></h:outputLabel>
     <div class="col-sm-10">
@@ -148,15 +177,16 @@ template="#{beanGeral.template}">
 
 
 
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <h:commandButton styleClass="btn btn-default" actionListener="#{beanOperador.salvarOperador}" value="Salvar"></h:commandButton>
-    </div>
-  </div>
-  
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton styleClass="btn btn-default"
+						actionListener="#{beanOperador.salvarOperador}" value="Salvar"></h:commandButton>
+				</div>
+			</div>
 
-</h:form>
 
-    		
+		</h:form>
+
+
 	</ui:define>
 </ui:composition>

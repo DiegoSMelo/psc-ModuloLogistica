@@ -29,12 +29,12 @@ public class PontoEstrategico {
 	private String email;
 	
 	@Column(nullable=false)
-	private Integer capacidadeTotalDePreteleiras;
+	private Integer capacidadeTotalDePrateleiras;
 	
 	@Column(nullable=false)
 	private Integer capacidadeAtualDePrateleiras;
 	
-	private Situacao situacao;
+	private Situacao situacaoPontoEstrategico;
 	
 	@Column(unique=true)
 	private String cnpj;
@@ -47,10 +47,10 @@ public class PontoEstrategico {
 		this.cnpj = cnpj;
 	}
 	public Integer getCapacidadeTotalDePreteleiras() {
-		return capacidadeTotalDePreteleiras;
+		return capacidadeTotalDePrateleiras;
 	}
 	public void setCapacidadeTotalDePreteleiras(Integer capacidadeTotalDePreteleiras) {
-		this.capacidadeTotalDePreteleiras = capacidadeTotalDePreteleiras;
+		this.capacidadeTotalDePrateleiras = capacidadeTotalDePreteleiras;
 	}
 	public Integer getCapacidadeAtualDePrateleiras() {
 		return capacidadeAtualDePrateleiras;
@@ -76,12 +76,7 @@ public class PontoEstrategico {
 	public void setEndereco(Endereco endereco) {
 		this.endereco = endereco;
 	}
-	public String getTeleone() {
-		return telefone;
-	}
-	public void setTeleone(String teleone) {
-		this.telefone = teleone;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -94,14 +89,16 @@ public class PontoEstrategico {
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
 	}
-	public Situacao getSituacao() {
-		return situacao;
+	public Situacao getSituacaoPontoEstrategico() {
+		return situacaoPontoEstrategico;
 	}
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
+	public void setSituacaoPontoEstrategico(Situacao situacao) {
+		this.situacaoPontoEstrategico = situacao;
 	}
 	
-	
+	public boolean isAtivo(){
+		return situacaoPontoEstrategico.equals(Situacao.ATIVO);
+	}
 
 	
 	

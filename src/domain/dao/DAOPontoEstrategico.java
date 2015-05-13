@@ -57,5 +57,4 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 			throw new DAOException(Mensagens.m6);
 		} 
 	}
-
 }

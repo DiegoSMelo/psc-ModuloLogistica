@@ -31,20 +31,17 @@ public class BeanOperador {
 	private List<Operador> listaOperadores;
 	private String filtroSituacao;
 	private Fachada fachada;
-	
-	
-	
+
+
+
 	public BeanOperador(){
 		this.operador = new Operador();
 		this.fachada = new Fachada();
 	}
-	
-	
+
+
 	public void salvarOperador(){
 		try {
-			
-			
-			
 			this.fachada.rnOperador.salvar(getOperador());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/index.xhtml");
 		} catch (DAOException e) {
@@ -52,58 +49,52 @@ public class BeanOperador {
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
-		
-		
+
+
 	}
-	
+
 	public void redirectAdd(){
 		try {
 			this.setOperador(new Operador());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/add.xhtml");
-			
+
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
-	
+
 	public void redirectEdit(){
 		try {
-				FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/edit.xhtml");	
-			
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/edit.xhtml");	
+
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
-	
-	
-	
+
 	public void alteraSituacao(){
-		
+
 		try {
 			Long codigo = Long.parseLong(FacesContext.getCurrentInstance().getExternalContext().getRequestParameterMap().get("operadorCodigo"));
 			Operador op = fachada.rnOperador.consultarPorId(codigo);
-			
+
 			if (op.isAtivo()) {
 				op.setSituacaoUsuario(Situacao.INATIVO);
 			}else{
 				op.setSituacaoUsuario(Situacao.ATIVO);
 			}
 			fachada.rnOperador.salvar(op);
-		
+
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/index.xhtml");
-			
-			
+
+
 		} catch (DAOException e) {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
 	}
-	
-	
-	
-	
-	
+
 	public Operador getOperador() {
 		if (this.operador.getEndereco() == null) {
 			this.operador.setEndereco(new Endereco());
@@ -118,52 +109,45 @@ public class BeanOperador {
 		this.operador = operador;
 	}
 
-
 	public Situacao[] getListaSituacoes(){
 		return Situacao.values();
 	}
-	
+
 	public NivelOperador[] getListaNiveis(){
 		return NivelOperador.values();
 	}
-	
+
 	public UF[] getListaUf() {
 		return UF.values();
 	}
-	
-	
-	
-
-
-
 
 	public List<Operador> getListaOperadores() {
-		
+
 		try {
 			if (this.filtroSituacao != null) {
 				switch (this.filtroSituacao) {
 				case "ALL":
 					this.listaOperadores = fachada.rnOperador
-							.listarTodosOperadores();
+					.listarTodosOperadores();
 					break;
 				case "ATIVO":
 					this.listaOperadores = fachada.rnOperador
-							.listarOperadoresPorSituacao(Situacao.ATIVO);
+					.listarOperadoresPorSituacao(Situacao.ATIVO);
 					break;
 				case "INATIVO":
 					this.listaOperadores = fachada.rnOperador
-							.listarOperadoresPorSituacao(Situacao.INATIVO);
+					.listarOperadoresPorSituacao(Situacao.INATIVO);
 					break;
 				default:
 					this.listaOperadores = fachada.rnOperador
-							.listarTodosOperadores();
+					.listarTodosOperadores();
 					break;
 				}
 			}
 		} catch (DAOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
-		
+
 		return listaOperadores;
 	}
 
@@ -173,7 +157,7 @@ public class BeanOperador {
 	}
 
 
-	
+
 
 
 	public String getFiltroSituacao() {

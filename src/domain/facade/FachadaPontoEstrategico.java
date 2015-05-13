@@ -22,7 +22,11 @@ public class FachadaPontoEstrategico {
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException{
 		return rnPontoEstrategico.listarPontosEstrategicosPorSituacao(situacao);
 	}
-
+	
+	public List<PontoEstrategico> listarTodosPontosEstrategicos(){
+		return rnPontoEstrategico.listarTodosPontosEstrategicos();
+	}
+	
 	public void salvar(PontoEstrategico pontoEstrategico)throws DAOException{
 		rnPontoEstrategico.salvar(pontoEstrategico);
 	}
@@ -30,5 +34,6 @@ public class FachadaPontoEstrategico {
 	public void deletar(PontoEstrategico pontoEstrategico){
 		rnPontoEstrategico.deletar(pontoEstrategico);
 	}
+	
 }
 
