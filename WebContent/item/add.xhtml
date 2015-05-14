@@ -1,0 +1,94 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" template="#{beanGeral.template}">
+	<ui:define name="body">
+
+
+
+
+
+		<ol class="breadcrumb">
+			<li><h:outputLink value="/psc-ModuloLogistica/home/index.xhtml">Página Inicial</h:outputLink></li>
+			<li><h:outputLink value="/psc-ModuloLogistica/item/index.xhtml">Itens</h:outputLink></li>
+			<li class="active">Adicionar Item</li>
+		</ol>
+
+
+
+
+<h:form styleClass="form-horizontal" prependId="false">
+
+			<div class="form-group">
+				<h:outputLabel value="Descrição" for="inputDescricao"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="1"
+						requiredMessage="Digite a descrição do item" styleClass="form-control"
+						id="inputDescricao" value="#{beanItem.item.descricao}"></h:inputText>
+					<h:message styleClass="text-danger" for="InputDescricao"></h:message>
+				</div>
+			</div>
+
+
+			<div class="form-group">
+				<h:outputLabel value="Largura" for="inputLargura"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="2"
+						requiredMessage="Digite o valor da largura" styleClass="form-control"
+						id="inputLargura"
+						value="#{beanItem.item.largura}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputLargura"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Altura" for="inputAltura"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="3"
+						requiredMessage="Digite o valor da altura" styleClass="form-control"
+						id="inputAltura" value="#{beanItem.item.altura}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputAltura"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Profundidade" for="inputProfundidade"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText required="true" tabindex="4"
+						requiredMessage="Digite o valor da profundidade" styleClass="form-control"
+						id="inputProfundidade" value="#{beanItem.item.profundidade}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputProfundidade"></h:message>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<h:outputLabel value="Peso" for="inputPeso"
+					styleClass="col-sm-2 control-label"></h:outputLabel>
+				<div class="col-sm-10">
+					<h:inputText styleClass="form-control" tabindex="5"
+						id="inputPeso" value="#{beanItem.item.peso}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputPeso"></h:message>
+				</div>
+			</div>
+
+
+
+
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<h:commandButton styleClass="btn btn-default"
+						actionListener="#{beanItem.salvarItem}" value="Salvar"></h:commandButton>
+				</div>
+			</div>
+
+
+</h:form>
+
+
+	</ui:define>
+</ui:composition>

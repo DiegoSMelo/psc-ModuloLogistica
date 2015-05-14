@@ -1,0 +1,114 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+template="#{beanGeral.template}">
+	<ui:define name="body">
+
+<h:form>
+
+
+
+<ol class="breadcrumb">
+  <li><h:outputLink value="/psc-ModuloLogistica/home/index.xhtml">Página Inicial</h:outputLink></li>
+  <li class="active">Itens</li>
+  
+   	<li class="active">Página <h:outputText id="pagAtual" value="#{beanItem.paginaAtual + 1}"></h:outputText></li>
+   
+</ol>
+
+
+
+<div class="areaPlus">
+
+	<h:commandLink actionListener="#{beanItem.redirectAdd}" styleClass="btn btn-success">Adicionar</h:commandLink>
+	
+	
+
+</div>
+
+
+
+<h:dataTable id="table-itens" styleClass="table table-hover table-bordered" value="#{beanItem.listaItens}" var="item" emptyMessage="Não há itens cadastrados">
+
+	<h:column>	
+		<f:facet name="header">Descrição</f:facet>
+		<h:outputText value="#{item.descricao}"></h:outputText>
+	</h:column>
+
+	<h:column>	
+		<f:facet name="header">Largura</f:facet>
+		<h:outputText value="#{item.largura}"></h:outputText>
+	</h:column>
+
+	<h:column>	
+		<f:facet name="header">Altura</f:facet>
+		<h:outputText value="#{item.altura}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Profundidade</f:facet>
+		<h:outputText value="#{item.profundidade}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Peso</f:facet>
+		<h:outputText value="#{item.peso}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Volume</f:facet>
+		<h:outputText value="#{item.volume}"></h:outputText>
+	</h:column>
+	
+	
+	
+	
+	
+	
+	<h:column>	
+		<f:facet name="header">Ações</f:facet>
+		
+		<h:commandLink styleClass="btn btn-info btn-acoes" actionListener="#{beanItem.redirectEdit}">
+			<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+			<f:setPropertyActionListener value="#{item}" target="#{beanItem.item}"></f:setPropertyActionListener>
+		</h:commandLink>
+		
+
+
+	
+	
+		
+		
+	</h:column>
+		
+	
+</h:dataTable>
+		
+
+<h:panelGroup layout="block" id="paginacao" rendered="#{beanItem.totalPaginas > 1}">
+<nav>
+  <ul class="pager">
+  	
+  	<li class="previous">
+    	<h:commandLink rendered="#{beanItem.exibeAnterior}"  actionListener="#{beanItem.paginaAnterior}">Anterior
+    		<f:ajax render="table-itens pagAtual paginacao" />
+    	</h:commandLink>
+    </li>
+  
+  
+    <li class="next">
+    	<h:commandLink rendered="#{beanItem.exibeProximo}" actionListener="#{beanItem.paginaProxima}">Próximo
+    		<f:ajax render="table-itens pagAtual paginacao" />
+    	</h:commandLink>
+    </li>
+    
+  </ul>
+</nav>		
+</h:panelGroup>		
+		
+</h:form>
+    		
+	</ui:define>
+</ui:composition>
