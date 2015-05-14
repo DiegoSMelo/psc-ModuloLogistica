@@ -9,8 +9,8 @@
 		<properties>
 			<property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
 			<property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost:1433;databaseName=ModuloLogistica_DB;" />
-			<property name="javax.persistence.jdbc.user" value="mimmo" />
-			<property name="javax.persistence.jdbc.password" value="codex632" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password" value="belgica00" />
 			<property name="dialect" value="org.hibernate.dialect.SQLServer2012Dialect" />
 
 			<!-- Configuracoes do Hibernate -->
