@@ -27,7 +27,7 @@ public class BeanItem {
 	private int quantidadeInicial;
 	private int paginaAtual;
 	private int quantidadePorPagina;
-	private int totalPaginas;
+	private double totalPaginas;
 
 	
 	
@@ -81,14 +81,14 @@ public class BeanItem {
 	}
 	
 	public boolean isExibeProximo(){
-		if ((this.getPaginaAtual() + 1) < this.getTotalPaginas()) {
+		if ((this.getPaginaAtual()) < ((int)this.getTotalPaginas())) {
 			return true;
 		}
 		return false;
 	}
 	
 	public boolean isExibeAnterior(){
-		if ((this.getPaginaAtual() + 1) > 1) {
+		if ((this.getPaginaAtual()) > 0) {
 			return true;
 		}
 		return false;
@@ -145,9 +145,11 @@ public class BeanItem {
 		return quantidadeInicial;
 	}
 	
-	public int getTotalPaginas() {
+	public double getTotalPaginas() {
 		try {
-			totalPaginas = (int) Math.ceil((this.fachada.rnItem.listarItensPorSituacao(Situacao.ATIVO)).size() / this.getQuantidadePorPagina());
+			//totalPaginas = (int) Math.ceil((this.fachada.rnItem.listarItensPorSituacao(Situacao.ATIVO)).size() / this.getQuantidadePorPagina());
+			totalPaginas = ((double) (this.fachada.rnItem.listarItensPorSituacao(Situacao.ATIVO)).size()) / ((double)this.getQuantidadePorPagina());
+			
 		} catch (DAOException e) {
 			e.printStackTrace();
 		}
