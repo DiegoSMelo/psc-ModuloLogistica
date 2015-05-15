@@ -24,32 +24,25 @@ import domain.util.Mensagens;
 @SessionScoped
 public class BeanPontoEstrategico {
 	
+////////////////////////////////atributos///////////////////////////////////////////////////////////////////////////////
+	private Fachada fachada;
 	private PontoEstrategico pontoEstrategico;
 	private List<PontoEstrategico> listaPontosEstrategicos;
 	private String filtroSituacao;
-	private Fachada fachada;
+////////////////////////////////atributos///////////////////////////////////////////////////////////////////////////////
 
 
+////////////////////////////////construtor///////////////////////////////////////////////////////////////////////////////
 	public BeanPontoEstrategico(){
 		this.fachada = new Fachada();	
 		this.pontoEstrategico = new PontoEstrategico();
 		
 	}
+////////////////////////////////construtor///////////////////////////////////////////////////////////////////////////////
+	
+	
 
-	public PontoEstrategico getPontoEstrategico() {
-		if (this.pontoEstrategico.getEndereco() == null) {
-			this.pontoEstrategico.setEndereco(new Endereco());
-		}
-		return pontoEstrategico;
-	}
-
-	public void setPontoEstrategico(PontoEstrategico pontoEstrategico) {
-		if (this.pontoEstrategico.getEndereco() == null) {
-			this.pontoEstrategico.setEndereco(new Endereco());
-		}
-		this.pontoEstrategico = pontoEstrategico;
-	}
-
+////////////////////////////////metodos gerais///////////////////////////////////////////////////////////////////////////////
 	public void salvarPontoEstrategico(){
 		
 		try {
@@ -105,18 +98,22 @@ public class BeanPontoEstrategico {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
 	}
+////////////////////////////////metodos gerais///////////////////////////////////////////////////////////////////////////////
+
 	
-
-	public Situacao[] getListaSituacoes(){
-		return Situacao.values();
+////////////////////////////////gets e sets///////////////////////////////////////////////////////////////////////////////
+	public PontoEstrategico getPontoEstrategico() {
+		if (this.pontoEstrategico.getEndereco() == null) {
+			this.pontoEstrategico.setEndereco(new Endereco());
+		}
+		return pontoEstrategico;
 	}
 
-	public UF[] getListaUf() {
-		return UF.values();
-	}
-
-	public UnidadeMedida[] getListaUnidadeMedidas() {
-		return UnidadeMedida.values();
+	public void setPontoEstrategico(PontoEstrategico pontoEstrategico) {
+		if (this.pontoEstrategico.getEndereco() == null) {
+			this.pontoEstrategico.setEndereco(new Endereco());
+		}
+		this.pontoEstrategico = pontoEstrategico;
 	}	
 
 	public List<PontoEstrategico> getListaPontosEstrategicos() {
@@ -163,5 +160,17 @@ public class BeanPontoEstrategico {
 	public void setFiltroSituacao(String filtroSituacao) {
 		this.filtroSituacao = filtroSituacao;
 	}
+	
+	public Situacao[] getListaSituacoes(){
+		return Situacao.values();
+	}
 
+	public UF[] getListaUf() {
+		return UF.values();
+	}
+
+	public UnidadeMedida[] getListaUnidadeMedidas() {
+		return UnidadeMedida.values();
+	}
+////////////////////////////////gets e sets///////////////////////////////////////////////////////////////////////////////
 }

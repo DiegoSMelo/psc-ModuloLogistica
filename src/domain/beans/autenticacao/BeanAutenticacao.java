@@ -22,10 +22,7 @@ import domain.util.Mensagens;
 public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////ATRIBUTOS///////////////////////////////	
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 
 	private Fachada fachada;

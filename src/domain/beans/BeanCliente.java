@@ -20,21 +20,26 @@ import domain.util.Mensagens;
 @ManagedBean
 @SessionScoped
 public class BeanCliente {
-	
+
+///////////////////////////////////////////////////////atributos///////////////////////////////////////////////////////////////
 	private Fachada fachada;
 	private Cliente cliente;
 	private List<Cliente> listaClientes;
 	private String filtroSituacao;
+////////////////////////////////////////////////////atributos//////////////////////////////////////////////////////////////////
 	
 	
+	
+///////////////////////////////////////////////////construtor///////////////////////////////////////////////////////////////////	
 	public BeanCliente(){
 		this.fachada = new Fachada();
 		cliente = new Cliente();
 	}
+////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////		
 	
 	
 	
-	
+//////////////////////////////////////////////////metodos gerais///////////////////////////////////////////////////////////////////////	
 	public void salvarCliente(){
 		try {
 			this.getFachada().rnCliente.salvar(this.getCliente());
@@ -90,7 +95,11 @@ public class BeanCliente {
 		}
 	}
 	
-
+//////////////////////////////////////////////////metodos gerais///////////////////////////////////////////////////////////////////////	
+	
+	
+	
+//////////////////////////////////////////////////gets e sets///////////////////////////////////////////////////////////////////////	
 	public Cliente getCliente() {
 		if (this.cliente.getEndereco() == null) {
 			this.cliente.setEndereco(new Endereco());
@@ -108,13 +117,6 @@ public class BeanCliente {
 	public Fachada getFachada() {
 		return fachada;
 	}
-	
-	public UF[] getListaUf(){
-		return UF.values();
-	}
-
-
-
 
 	public String getFiltroSituacao() {
 		if (this.filtroSituacao == null) {
@@ -123,15 +125,9 @@ public class BeanCliente {
 		return filtroSituacao;
 	}
 
-
-
-
 	public void setFiltroSituacao(String filtroSituacao) {
 		this.filtroSituacao = filtroSituacao;
 	}
-
-
-
 
 	public List<Cliente> getListaClientes() {
 		try {
@@ -161,16 +157,18 @@ public class BeanCliente {
 		return listaClientes;
 	}
 
-
-
-
 	public void setListaClientes(List<Cliente> listaClientes) {
 		this.listaClientes = listaClientes;
 	}
 	
 	
+	
 	public Situacao[] getListaSituacoes(){
 		return Situacao.values();
 	}
-
+	
+	public UF[] getListaUf(){
+		return UF.values();
+	}
+//////////////////////////////////////////////////gets e sets///////////////////////////////////////////////////////////////////////	
 }

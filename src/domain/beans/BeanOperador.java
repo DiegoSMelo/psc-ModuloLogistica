@@ -18,28 +18,30 @@ import domain.exceptions.DAOException;
 import domain.facade.Fachada;
 import domain.util.Mensagens;
 
-/**
- * 
- * @author diego_melo
- *
- */
+
 
 @ManagedBean
 @SessionScoped
 public class BeanOperador {
+	
+////////////////////////////////////////////////////////atributos/////////////////////////////////////////////////////////////////////////
+	private Fachada fachada;
 	private Operador operador;
 	private List<Operador> listaOperadores;
 	private String filtroSituacao;
-	private Fachada fachada;
+////////////////////////////////////////////////////////atributos/////////////////////////////////////////////////////////////////////////
 
-
-
+	
+	
+////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
 	public BeanOperador(){
 		this.operador = new Operador();
 		this.fachada = new Fachada();
 	}
+////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
 
-
+	
+////////////////////////////////////////////////////////metodos gerais/////////////////////////////////////////////////////////////////////////
 	public void salvarOperador(){
 		try {
 			this.fachada.rnOperador.salvar(getOperador());
@@ -52,7 +54,10 @@ public class BeanOperador {
 
 
 	}
-
+	
+	/**
+	 * Cria um novo objeto para o operador e redireciona para a página de cadastro.
+	 */
 	public void redirectAdd(){
 		try {
 			this.setOperador(new Operador());
@@ -62,7 +67,10 @@ public class BeanOperador {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
-
+	
+	/**
+	 * Redireciona para a página de edição.
+	 */
 	public void redirectEdit(){
 		try {
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/operador/edit.xhtml");	
@@ -72,6 +80,10 @@ public class BeanOperador {
 		}
 	}
 
+	/**
+	 * Se a situação do operador estiver ATIVA, esse método torna INATIVA.
+	 * Se a situação do operador estiver INATIVA, esse método torna ATIVA.
+	 */
 	public void alteraSituacao(){
 
 		try {
@@ -94,7 +106,10 @@ public class BeanOperador {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
 	}
-
+////////////////////////////////////////////////////////metodos gerais/////////////////////////////////////////////////////////////////////////
+	
+	
+////////////////////////////////////////////////////////gets e sets/////////////////////////////////////////////////////////////////////////	
 	public Operador getOperador() {
 		if (this.operador.getEndereco() == null) {
 			this.operador.setEndereco(new Endereco());
@@ -109,18 +124,13 @@ public class BeanOperador {
 		this.operador = operador;
 	}
 
-	public Situacao[] getListaSituacoes(){
-		return Situacao.values();
-	}
-
-	public NivelOperador[] getListaNiveis(){
-		return NivelOperador.values();
-	}
-
-	public UF[] getListaUf() {
-		return UF.values();
-	}
-
+	/**
+	 * Por default e caso o filtro seja "ALL", ele retornará todos os operadores.
+	 * Caso o filtro seja "ATIVO", retornará apenas os operadores ativos.
+	 * Caso o filtro seja "INATIVO", retornará apenas os operadores inativos.
+	 * 
+	 * @return List<Operador>
+	 */
 	public List<Operador> getListaOperadores() {
 
 		try {
@@ -151,14 +161,9 @@ public class BeanOperador {
 		return listaOperadores;
 	}
 
-
 	public void setListaOperadores(List<Operador> listaOperadores) {
 		this.listaOperadores = listaOperadores;
 	}
-
-
-
-
 
 	public String getFiltroSituacao() {
 		if (this.filtroSituacao == null) {
@@ -166,10 +171,41 @@ public class BeanOperador {
 		}
 		return filtroSituacao;
 	}
-
-
+	
+	
 	public void setFiltroSituacao(String filtroSituacao) {
 		this.filtroSituacao = filtroSituacao;
 	}
+	
+	
+	/**
+	 * Retorna a lista de situações possíveis
+	 * 
+	 * @return Situacao[]
+	 */
+	public Situacao[] getListaSituacoes(){
+		return Situacao.values();
+	}
 
+	
+	/**
+	 * Retorna a lista de niveis de operador possíveis.
+	 * 
+	 * @return NivelOperador[]
+	 */
+	public NivelOperador[] getListaNiveis(){
+		return NivelOperador.values();
+	}
+
+	/**
+	 * Retorna todas as UF's possíveis.
+	 * Ex; PE, AL, RS, MG.
+	 * 
+	 * 
+	 * @return UF[]
+	 */
+	public UF[] getListaUf() {
+		return UF.values();
+	}
+////////////////////////////////////////////////////////gets e sets/////////////////////////////////////////////////////////////////////////	
 }
