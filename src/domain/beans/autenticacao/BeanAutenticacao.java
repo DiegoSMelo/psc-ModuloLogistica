@@ -9,7 +9,6 @@ import javax.faces.context.FacesContext;
 import org.primefaces.context.RequestContext;
 
 import domain.basics.enums.NivelOperador;
-import domain.basics.enums.Situacao;
 import domain.basics.profile.Cliente;
 import domain.basics.profile.Operador;
 import domain.basics.profile.Usuario;
@@ -23,8 +22,13 @@ import domain.util.Mensagens;
 public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////ATRIBUTOS///////////////////////////////	
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	Fachada fachada;
+
+	private Fachada fachada;
 	
 	private String login;
 	private String senha;
@@ -42,19 +46,6 @@ public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
-		Operador op = new Operador();
-		op.setNome("Administrador");
-		op.setCpf("123456");
-		op.setLogin("adm");
-		op.setSenha("adm");
-		op.setSituacaoUsuario(Situacao.ATIVO);
-		op.setNivelOperador(NivelOperador.ADMINISTRATIVO);
-		try {
-			fachada.rnOperador.salvar(op);
-		} catch (DAOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
 		
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {

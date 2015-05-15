@@ -18,7 +18,7 @@ template="#{beanGeral.template}">
 <div class="areaPlus">
 	<h:commandLink actionListener="#{beanOperador.redirectAdd}" styleClass="btn btn-success">Adicionar</h:commandLink>
 	
-<h:outputLabel styleClass="selectFiltro" value="Filtrar por: " for="selectFiltroNiveis">
+<h:outputLabel styleClass="selectFiltro" value="Filtrar por: " >
 	<h:selectOneMenu styleClass="form-control" value="#{beanOperador.filtroSituacao}">
 		<f:selectItem noSelectionOption="false" itemLabel="Tudo" itemValue="ALL"></f:selectItem>
 		<f:selectItems value="#{beanOperador.listaSituacoes}"></f:selectItems>

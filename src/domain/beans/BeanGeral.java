@@ -1,12 +1,14 @@
 package domain.beans;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 
 import domain.util.Cookies;
 
 
 
 @ManagedBean
+@SessionScoped
 public class BeanGeral {
 	private String title;
 	private String template;

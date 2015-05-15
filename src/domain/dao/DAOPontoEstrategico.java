@@ -27,7 +27,7 @@ public class DAOPontoEstrategico extends DAOGeneric<PontoEstrategico> implements
 	public List<PontoEstrategico> listarPontosEstrategicosPorSituacao(Situacao situacao) throws DAOException {
 
 		try {
-			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.situacao = :situacao", PontoEstrategico.class);
+			TypedQuery<PontoEstrategico> result = entityManager.createQuery("SELECT p FROM PontoEstrategico p WHERE p.situacaoPontoEstrategico = :situacao", PontoEstrategico.class);
 			result.setParameter("situacao", situacao);			
 			return result.getResultList();
 		}

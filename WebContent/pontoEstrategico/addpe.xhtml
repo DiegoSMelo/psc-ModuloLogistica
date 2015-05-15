@@ -19,7 +19,7 @@
 
 
 
-		<h:form styleClass="form-horizontal" prependId="false">
+<h:form styleClass="form-horizontal" prependId="false">
 
 			<div class="form-group">
 				<h:outputLabel value="Nome" for="inputNome"
@@ -28,8 +28,8 @@
 					<h:inputText required="true" tabindex="1"
 						requiredMessage="Digite o nome do Ponto Estrategico"
 						styleClass="form-control" id="inputNome"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.nome}"></h:inputText>
-					<h:message styleClass="text-danger" for="InputNome"></h:message>
+						value="#{beanPontoEstrategico.pontoEstrategico.nome}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputNome"></h:message>
 				</div>
 			</div>
 
@@ -40,8 +40,8 @@
 					<h:inputText required="true" tabindex="2"
 					requiredMessage="Telefone Obrigatório"
 					styleClass="form-control" id="inputTelefone"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.telefone}"></h:inputText>
-					<h:message styleClass="text-danger" for="selectTelefone"></h:message>
+						value="#{beanPontoEstrategico.pontoEstrategico.telefone}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputTelefone"></h:message>
 				</div>
 			</div>
 
@@ -52,8 +52,8 @@
 					<h:inputText required="true" tabindex="3"
 						requiredMessage="Favor inserir E-mail"
 						styleClass="form-control" id="inputEmail"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.email}"></h:inputText>
-					<h:message styleClass="text-danger" for="selectEmail"></h:message>
+						value="#{beanPontoEstrategico.pontoEstrategico.email}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputEmail"></h:message>
 				</div>
 			</div>
 
@@ -63,21 +63,9 @@
 				<div class="col-sm-10">
 					<h:inputText required="true" tabindex="4"
 						requiredMessage="Favor inserir Capacidade Total"
-						styleClass="form-control" id="inputTotalPrateleiras"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.capacidadeTotalDePreteleiras}"></h:inputText>
-					<h:message styleClass="text-danger" for="selectEmail"></h:message>
-				</div>
-			</div>
-
-			<div class="form-group">
-				<h:outputLabel value="Capacidade Atual de Prateleiras"
-					for="inputAtualPrateleiras" styleClass="col-sm-2 control-label"></h:outputLabel>
-				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="5"
-						requiredMessage="Favor inserir Capacidade Atual"
-						styleClass="form-control"id="inputAtualPrateleiras"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.capacidadeAtualDePrateleiras}"></h:inputText>
-					<h:message styleClass="text-danger" for="selectEmail"></h:message>
+						styleClass="form-control" id="inputTotalPrateleiras" 
+						value="#{beanPontoEstrategico.pontoEstrategico.capacidadeTotalDePreteleiras}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputTotalPrateleiras"></h:message>
 				</div>
 			</div>
 
@@ -85,11 +73,11 @@
 				<h:outputLabel value="CNPJ" for="inputCnpj"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="6"
+					<h:inputText required="true" tabindex="5"
 						requiredMessage="Favor digitar o CNPJ" 
 						styleClass="form-control" id="inputCnpj"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.cnpj}"></h:inputText>
-					<h:message styleClass="text-danger" for="selectCnpj"></h:message>
+						value="#{beanPontoEstrategico.pontoEstrategico.cnpj}"></h:inputText>
+					<h:message styleClass="text-danger" for="inputCnpj"></h:message>
 				</div>
 			</div>
 
@@ -97,22 +85,22 @@
 				<h:outputLabel value="Logradouro" for="inputLogradouro"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="7"
+					<h:inputText required="true" tabindex="6"
 						requiredMessage="Digite o logradouro" styleClass="form-control"
 						id="inputLogradouro"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.logradouro}"></h:inputText>
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.logradouro}"></h:inputText>
 					<h:message styleClass="text-danger" for="inputLogradouro"></h:message>
 				</div>
 			</div>
 
 			<div class="form-group">
-				<h:outputLabel value="Bairro" for="inputBairro"
+				<h:outputLabel value="Bairro" for="inputBairro" 
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="8"
-						requiredMessage="Digite o seu bairro" styleClass="form-control"
+					<h:inputText required="true" tabindex="7"
+						requiredMessage="Digite o seu bairro" styleClass="form-control" 
 						id="inputBairro"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.bairro}"></h:inputText>
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.bairro}"></h:inputText>
 					<h:message styleClass="text-danger" for="inputBairro"></h:message>
 				</div>
 			</div>
@@ -121,9 +109,9 @@
 				<h:outputLabel value="Número" for="inputNumero"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText styleClass="form-control" tabindex="9"
+					<h:inputText styleClass="form-control" tabindex="8"
 						id="inputNumero"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.numero}"></h:inputText>
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.numero}"></h:inputText>
 					<h:message styleClass="text-danger" for="inputNumero"></h:message>
 				</div>
 			</div>
@@ -132,10 +120,10 @@
 				<h:outputLabel value="CEP" for="inputCep"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="10"
+					<h:inputText required="true" tabindex="9"
 						requiredMessage="Digite o seu CEP" styleClass="form-control"
 						id="inputCep"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.cep}"></h:inputText>
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.cep}"></h:inputText>
 					<h:message styleClass="text-danger" for="inputCep"></h:message>
 				</div>
 			</div>
@@ -144,10 +132,10 @@
 				<h:outputLabel value="Cidade" for="inputCidade"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:inputText required="true" tabindex="11"
-						requiredMessage="Digite a sua cidade" styleClass="form-control"
+					<h:inputText required="true" tabindex="10"
+						requiredMessage="Digite a sua cidade" styleClass="form-control" 
 						id="inputCidade"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.cidade}"></h:inputText>
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.cidade}"></h:inputText>
 					<h:message styleClass="text-danger" for="inputCidade"></h:message>
 				</div>
 			</div>
@@ -156,10 +144,10 @@
 				<h:outputLabel value="UF" for="selectUf"
 					styleClass="col-sm-2 control-label"></h:outputLabel>
 				<div class="col-sm-10">
-					<h:selectOneMenu required="true" tabindex="12"
+					<h:selectOneMenu required="true" tabindex="11"
 						requiredMessage="Escolha a sua UF" styleClass="form-control"
 						id="selectUf"
-						value="#{beanPontoEstrategico.novoPontoEstrategico.endereco.uf}">
+						value="#{beanPontoEstrategico.pontoEstrategico.endereco.uf}">
 						<f:selectItems value="#{beanPontoEstrategico.listaUf}"></f:selectItems>
 					</h:selectOneMenu>
 					<h:message styleClass="text-danger" for="selectUf"></h:message>
@@ -170,7 +158,7 @@
 			<div class="form-group">
 				<div class="col-sm-offset-2 col-sm-10">
 					<h:commandButton styleClass="btn btn-default"
-						actionListener="#{beanPontoEstrategico.salvarPontoEstrategico}"
+						actionListener="#{beanPontoEstrategico.salvarPontoEstrategico}" 
 						value="Salvar"></h:commandButton>
 				</div>
 			</div>

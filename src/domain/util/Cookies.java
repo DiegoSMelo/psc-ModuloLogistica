@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 public class Cookies {
 	
-	
 	public static void RegistraCookieLogin(Long codigoUsuario, int nivelUsuario){
 		
 		FacesContext.getCurrentInstance()
@@ -20,8 +19,6 @@ public class Cookies {
 		 .getExternalContext()
 		 .addResponseCookie("Nivel",Criptografia.criptoStrings(nivelUsuario + ""), null);
 	}
-	
-	
 	
 	public static Long retornaIdUsuarioLogado(){
 		FacesContext ctx = FacesContext.getCurrentInstance();
@@ -41,25 +38,21 @@ public class Cookies {
 	    return nivel;
 	}
 	
-	
-	public static void destroiCookie(){
-		
+	public static void destroiCookie(){	
 		FacesContext ctx = FacesContext.getCurrentInstance();
 	    ExternalContext extContext = ctx.getExternalContext();
 	    HttpServletResponse response = (HttpServletResponse) extContext.getResponse();
 	    Map<String, Object> cookies = extContext.getRequestCookieMap();
-    
+	    
 	    Cookie cookie = (Cookie) cookies.get("User");
 	    cookie.setValue("");
-        cookie.setMaxAge(-1);
+        cookie.setMaxAge(0);
         response.addCookie(cookie);
-        
-        
+   
         Cookie cookie2 = (Cookie) cookies.get("Nivel");
 	    cookie2.setValue("");
-        cookie2.setMaxAge(-1);
+        cookie2.setMaxAge(0);
         response.addCookie(cookie2);
-       
-   
+        
 	}
 }

@@ -22,8 +22,8 @@ public class RNPontoEstrategico {
 
 	public void salvar(PontoEstrategico pontoEstrategico) throws DAOException {
 
-		if (this.daoPontoEstrategico.buscarPontoEstrategicoPorCNPJ(pontoEstrategico.getCnpj())== null) {
-
+		if (this.daoPontoEstrategico.buscarPontoEstrategicoPorCNPJ(pontoEstrategico.getCnpj()) == null) {
+			pontoEstrategico.setCapacidadeAtualDePrateleiras(pontoEstrategico.getCapacidadeTotalDePreteleiras());
 			pontoEstrategico.setSituacaoPontoEstrategico(Situacao.ATIVO);
 			this.daoPontoEstrategico.inserir(pontoEstrategico);
 

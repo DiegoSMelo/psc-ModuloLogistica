@@ -40,6 +40,21 @@ public class PontoEstrategico {
 	private String cnpj;
 	
 	
+	public boolean isAtivo(){
+		return situacaoPontoEstrategico.equals(Situacao.ATIVO);
+	}
+	
+	
+	public boolean isAlerta(){
+		
+		if (this.getCapacidadeAtualDePrateleiras() <= 20) {
+			return true;
+		}
+		
+		return false;
+	}
+	
+	
 	public String getCnpj() {
 		return cnpj;
 	}
@@ -96,9 +111,7 @@ public class PontoEstrategico {
 		this.situacaoPontoEstrategico = situacao;
 	}
 	
-	public boolean isAtivo(){
-		return situacaoPontoEstrategico.equals(Situacao.ATIVO);
-	}
+	
 
 	
 	

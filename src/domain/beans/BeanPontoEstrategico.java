@@ -23,35 +23,37 @@ import domain.util.Mensagens;
 @ManagedBean
 @SessionScoped
 public class BeanPontoEstrategico {
-	private PontoEstrategico novoPontoEstrategico;
+	
+	private PontoEstrategico pontoEstrategico;
 	private List<PontoEstrategico> listaPontosEstrategicos;
 	private String filtroSituacao;
 	private Fachada fachada;
 
 
 	public BeanPontoEstrategico(){
-
-		this.novoPontoEstrategico = new PontoEstrategico();
 		this.fachada = new Fachada();	
+		this.pontoEstrategico = new PontoEstrategico();
+		
 	}
 
-	public PontoEstrategico getNovoPontoEstrategico() {
-		if (this.novoPontoEstrategico.getEndereco() == null) {
-			this.novoPontoEstrategico.setEndereco(new Endereco());
+	public PontoEstrategico getPontoEstrategico() {
+		if (this.pontoEstrategico.getEndereco() == null) {
+			this.pontoEstrategico.setEndereco(new Endereco());
 		}
-		return novoPontoEstrategico;
+		return pontoEstrategico;
 	}
 
-	public void setNovoPontoEstrategico(PontoEstrategico novoPontoEstrategico) {
-		if (this.novoPontoEstrategico.getEndereco() == null) {
-			this.novoPontoEstrategico.setEndereco(new Endereco());
+	public void setPontoEstrategico(PontoEstrategico pontoEstrategico) {
+		if (this.pontoEstrategico.getEndereco() == null) {
+			this.pontoEstrategico.setEndereco(new Endereco());
 		}
-		this.novoPontoEstrategico = novoPontoEstrategico;
+		this.pontoEstrategico = pontoEstrategico;
 	}
 
 	public void salvarPontoEstrategico(){
+		
 		try {
-			this.fachada.rnPontoEstrategico.salvar(getNovoPontoEstrategico());
+			this.fachada.rnPontoEstrategico.salvar(this.getPontoEstrategico());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/pontoEstrategico/indexpe.xhtml");
 		} catch (DAOException e) {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
@@ -62,7 +64,7 @@ public class BeanPontoEstrategico {
 
 	public void redirectAdd(){
 		try {
-			this.setNovoPontoEstrategico(new PontoEstrategico());
+			this.setPontoEstrategico(new PontoEstrategico());
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/pontoEstrategico/addpe.xhtml");
 
 		} catch (IOException e) {
@@ -78,6 +80,8 @@ public class BeanPontoEstrategico {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
 	}
+	
+	
 
 	public void alteraSituacao(){
 
@@ -101,6 +105,7 @@ public class BeanPontoEstrategico {
 			RequestContext.getCurrentInstance().execute("alert('" + Mensagens.m3 + "');");
 		}
 	}
+	
 
 	public Situacao[] getListaSituacoes(){
 		return Situacao.values();
