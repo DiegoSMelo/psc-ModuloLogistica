@@ -168,10 +168,6 @@ public class BeanAutenticacao implements Serializable{
 		return usuarioLogado;
 	}
 
-	
-
-	
-	
 //////////////////////////////GET E SETS///////////////////////////////
 
 

@@ -64,6 +64,24 @@ template="#{beanGeral.template}">
 		
 		
 		
+		
+		<h:commandLink styleClass="btn btn-info btn-acoes" actionListener="#{beanPontoEstrategico.redirectEdit}">
+			Registros de declarações (falta fazer)
+			<f:setPropertyActionListener value="#{pontoEstrategico}" target="#{beanPontoEstrategico.pontoEstrategico}"></f:setPropertyActionListener>
+		</h:commandLink>
+		
+		
+		<h:commandLink styleClass="btn btn-info btn-acoes" actionListener="#{beanPontoEstrategico.redirectEdit}">
+			Registros de itens (falta fazer)
+			<f:setPropertyActionListener value="#{pontoEstrategico}" target="#{beanPontoEstrategico.pontoEstrategico}"></f:setPropertyActionListener>
+		</h:commandLink>
+		
+		
+		
+		
+		
+		
+		
 		<h:commandLink styleClass="btn btn-success btn-acoes"  rendered="#{pontoEstrategico.situacaoPontoEstrategico eq 'INATIVO'}"   actionListener="#{beanPontoEstrategico.alteraSituacao}" immediate="true">
 			 <f:param value="#{pontoEstrategico.codigo}" name="pontoEstrategicoCodigo"/>
 			Ativar
