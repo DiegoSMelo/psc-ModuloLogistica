@@ -1,8 +1,11 @@
 package domain.rn;
 
+import java.util.Date;
+
 import domain.basics.ItemDeclaracao;
-import domain.basics.PontoEstrategico;
 import domain.basics.MedidasPontoEstrategico;
+import domain.basics.PontoEstrategico;
+import domain.basics.enums.Situacao;
 import domain.dao.IDAODeclaracao;
 import domain.dao.IDAOPontoEstrategico;
 import domain.dao.factory.DAOFactory;
@@ -29,6 +32,9 @@ public class RNDeclaracao {
 	
 	public void registraEntrada(ItemDeclaracao itemDeclaracao) throws PontoEstrategicoNaoSuportaDeclaracaoException, DAOException{
 		if (itemDeclaracao.getId().getDeclaracao().isEntrada() && this.isPontoEstrategicoSuporta(itemDeclaracao)) {
+			itemDeclaracao.getId().getDeclaracao().setDataHora(new Date());
+			itemDeclaracao.getId().getDeclaracao().setSituacao(Situacao.ATIVO);
+			
 			this.daoDeclaracao.inserir(itemDeclaracao.getId().getDeclaracao());
 			this.daoDeclaracao.inserirItemDeclaracao(itemDeclaracao);
 			

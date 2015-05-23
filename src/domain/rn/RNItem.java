@@ -36,7 +36,7 @@ public class RNItem {
 	}
 	
 	public Item consultarPorId(Long codigo){
-		return this.consultarPorId(codigo);
+		return this.daoItem.consultarPorId(codigo);
 	}
 	
 	public List<Item> listarItensPorSituacao(Situacao situacao) throws DAOException{
