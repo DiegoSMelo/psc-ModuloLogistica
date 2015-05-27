@@ -1,8 +1,8 @@
 package domain.beans;
 
 import java.io.IOException;
-import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -13,17 +13,13 @@ import domain.basics.Declaracao;
 import domain.basics.Item;
 import domain.basics.ItemDeclaracao;
 import domain.basics.ItemDeclaracaoPK;
-import domain.basics.PontoEstrategico;
-import domain.basics.enums.Situacao;
 import domain.basics.enums.TipoDeclaracao;
-import domain.basics.profile.Cliente;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
 import domain.facade.Fachada;
 
-/*
- 
- data - automatico
+/* 
+data - automatico
 tipoDeclaracao - automatico
 responsavelEntrega - form
 responsavelRecebimento - form
@@ -34,7 +30,6 @@ situacao - automatico (ativo)
 item - form(via caixa de pesquisa)
 
 quantidade - form
- 
  */
 
 
@@ -52,6 +47,7 @@ public class BeanDeclaracao {
 ////////////////////////////////////////////////////////atributos/////////////////////////////////////////////////////////////////////////
 	
 	
+	
 ////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
 	public BeanDeclaracao(){
 		this.fachada = new Fachada();
@@ -65,10 +61,8 @@ public class BeanDeclaracao {
 	
 	
 	
-	
+////////////////////////////////////////////////////////métodos gerais/////////////////////////////////////////////////////////////////////////	
 	public void registrarEntrada(){
-		System.out.println(this.getCodigoItem());
-		
 		
 		this.getItemDeclaracao().getId().getDeclaracao().setTipoDeclaracao(TipoDeclaracao.ENTRADA);
 		this.getItemDeclaracao().getId().getDeclaracao().setResponsavelRemocao("");
@@ -79,11 +73,14 @@ public class BeanDeclaracao {
 		
 		try {
 			fachada.rnDeclaracao.registraEntrada(this.getItemDeclaracao());
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/declaracao/index.xhtml");
 		} catch (PontoEstrategicoNaoSuportaDeclaracaoException | DAOException e) {
-			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
+			
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	
@@ -98,7 +95,7 @@ public class BeanDeclaracao {
 		}
 	}
 	
-	
+////////////////////////////////////////////////////////métodos gerais/////////////////////////////////////////////////////////////////////////
 	
 	
 	
@@ -184,32 +181,7 @@ public class BeanDeclaracao {
 
 
 
-	public List<Cliente> getListaClientes(){
-		try {
-			return fachada.rnCliente.listaClientesPorSituacao(Situacao.ATIVO);
-		} catch (DAOException e) {
-			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
-		}
-		return null;
-	}
-	
-	public List<Item> getListaItens(){
-		try {
-			return fachada.rnItem.listarItensPorSituacao(Situacao.ATIVO);
-		} catch (DAOException e) {
-			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
-		}
-		return null;
-	}
-	
-	public List<PontoEstrategico> getListaDePontosEstrategicos(){
-		try {
-			return fachada.rnPontoEstrategico.listarPontosEstrategicosPorSituacao(Situacao.ATIVO);
-		} catch (DAOException e) {
-			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
-		}
-		return null;
-	}
+
 ////////////////////////////////////////////////////////gets e sets/////////////////////////////////////////////////////////////////////////
 
 
