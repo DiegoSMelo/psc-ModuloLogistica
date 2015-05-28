@@ -1,6 +1,7 @@
 package domain.rn;
 
 import java.util.Date;
+import java.util.List;
 
 import domain.basics.ItemDeclaracao;
 import domain.basics.MedidasPontoEstrategico;
@@ -26,6 +27,7 @@ public class RNDeclaracao {
 		this.daoDeclaracao = DAOFactory.getDaoDeclaracao();
 		this.daoPontoEstrategico = DAOFactory.getDaoPontoEstrategico();
 	}
+	
 	
 	
 	
@@ -66,5 +68,13 @@ public class RNDeclaracao {
 		quantidadePrateleiras = (int) Math.ceil((itemDeclaracao.getId().getItem().getVolume() * itemDeclaracao.getQuantidade()) / MedidasPontoEstrategico.volumePrateleira);
 		
 		return quantidadePrateleiras;
+	}
+	
+	public List<ItemDeclaracao> consultarTodosItensDeclaracoes(Integer indiceInicial, Integer quantidade) throws DAOException{
+		return this.daoDeclaracao.consultarTodosItensDeclaracoes(indiceInicial, quantidade);
+	}
+	
+	public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
+		return this.daoDeclaracao.consultarTodosItensDeclaracoes();
 	}
 }

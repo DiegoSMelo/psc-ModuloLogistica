@@ -1,0 +1,135 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:h="http://java.sun.com/jsf/html"
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:p="http://primefaces.org/ui"
+template="#{beanGeral.template}">
+	<ui:define name="body">
+
+<h:form>
+
+
+
+<ol class="breadcrumb">
+  <li><h:outputLink value="/psc-ModuloLogistica/home/index.xhtml">Página Inicial</h:outputLink></li>
+  <li class="active">Declarações</li>
+  
+   	<li class="active">Página <h:outputText id="pagAtual" value="#{beanDeclaracao.paginaAtual + 1}"></h:outputText></li>
+   
+</ol>
+
+
+
+<div class="areaPlus">
+
+	<h:commandLink actionListener="#{beanDeclaracao.redirectEntrada}" styleClass="btn btn-success">Registrar Entrada 
+		<span class="glyphicon glyphicon-import" aria-hidden="true"></span>
+	</h:commandLink>
+
+</div>
+
+
+
+<h:dataTable id="table-itens" styleClass="table table-hover table-bordered" value="#{beanDeclaracao.listaItensDeclaracoes}" var="itde" emptyMessage="Não há declarações cadastradas">
+
+	<h:column>	
+		<f:facet name="header">Tipo 
+		
+		</f:facet>
+		
+		
+		<h:outputText rendered="#{itde.id.declaracao.entrada}" value="Entrada "></h:outputText>
+		<h:panelGroup rendered="#{itde.id.declaracao.entrada}" styleClass="glyphicon glyphicon-import"></h:panelGroup>
+		
+		<h:outputText rendered="#{itde.id.declaracao.saida}" value="Saída "></h:outputText>
+		<h:panelGroup rendered="#{itde.id.declaracao.saida}" styleClass="glyphicon glyphicon-export"></h:panelGroup>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Data de Registro
+		
+		</f:facet>
+		
+		<h:outputText value="#{itde.id.declaracao.dataHora}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Item
+		
+			<h:inputText size="10" id="pesquisarItem"></h:inputText>
+		</f:facet>
+		
+		<h:outputText value="#{itde.id.item.descricao}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Quantidade</f:facet>
+		<h:outputText value="#{itde.quantidade}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Ponto Estratégico
+		
+			<h:inputText size="10" id="pesquisarPonto"></h:inputText>
+		</f:facet>
+		
+		<h:outputText value="#{itde.id.declaracao.pontoEstrategico.nome}"></h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Cliente
+		
+		
+			<h:inputText size="10" id="pesquisarCliente"></h:inputText>
+		</f:facet>
+		
+		<h:outputText value="#{itde.id.declaracao.cliente.nome}"></h:outputText>
+	</h:column>
+
+
+
+	
+	<h:column>	
+		<f:facet name="header">Ações</f:facet>
+		
+		<h:commandLink styleClass="btn btn-info btn-acoes" actionListener="#{beanItem.redirectEdit}">
+			<span class="glyphicon glyphicon-export" aria-hidden="true"></span>
+			<f:setPropertyActionListener value="#{item}" target="#{beanItem.item}"></f:setPropertyActionListener>
+		</h:commandLink>
+		
+		
+		
+
+		
+		
+	</h:column>
+		
+	
+</h:dataTable>
+
+
+<h:panelGroup layout="block" id="paginacao" rendered="#{beanDeclaracao.totalPaginas > 1}">
+<nav>
+  <ul class="pager">
+  	
+  	<li class="previous">
+    	<h:commandLink rendered="#{beanDeclaracao.exibeAnterior}"  actionListener="#{beanDeclaracao.paginaAnterior}">Anterior
+    		<f:ajax render="table-itens pagAtual paginacao" />
+    	</h:commandLink>
+    </li>
+  
+  
+    <li class="next">
+    	<h:commandLink rendered="#{beanDeclaracao.exibeProximo}" actionListener="#{beanDeclaracao.paginaProxima}">Próximo
+    		<f:ajax render="table-itens pagAtual paginacao" />
+    	</h:commandLink>
+    </li>
+    
+  </ul>
+</nav>		
+</h:panelGroup>		
+		
+</h:form>
+    		
+	</ui:define>
+</ui:composition>

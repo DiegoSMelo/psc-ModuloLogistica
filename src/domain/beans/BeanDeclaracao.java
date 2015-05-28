@@ -1,6 +1,7 @@
 package domain.beans;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -44,7 +45,14 @@ public class BeanDeclaracao {
 	private Long codigoCliente;
 	private Long codigoItem;
 	private Long codigoPontoEstrategico;
+	
+	private List<ItemDeclaracao> listaItensDeclaracoes;
+	private int quantidadeInicial;
+	private int quantidadePorPagina;
+	private int paginaAtual;
+	private double totalPaginas;
 ////////////////////////////////////////////////////////atributos/////////////////////////////////////////////////////////////////////////
+	
 	
 	
 	
@@ -53,9 +61,10 @@ public class BeanDeclaracao {
 		this.fachada = new Fachada();
 		
 		this.itemDeclaracao = new ItemDeclaracao();
+		this.setPaginaAtual(0);
+		this.setQuantidadePorPagina(10);
 	}
 ////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
-	
 	
 	
 	
@@ -95,11 +104,36 @@ public class BeanDeclaracao {
 		}
 	}
 	
+
+	public void paginaProxima(){
+		this.setPaginaAtual(this.getPaginaAtual() + 1);
+	}
+	
+	public void paginaAnterior(){
+		this.setPaginaAtual(this.getPaginaAtual() - 1);
+	}
+	
+	
 ////////////////////////////////////////////////////////métodos gerais/////////////////////////////////////////////////////////////////////////
 	
 	
 	
-	
+////////////////////////////////////////////////////////metodos de verificacao///////////////////////////////////////////////////////////////
+public boolean isExibeProximo(){
+if ((this.getPaginaAtual()) < ((int)this.getTotalPaginas())) {
+return true;
+}
+return false;
+}
+
+public boolean isExibeAnterior(){
+if ((this.getPaginaAtual()) > 0) {
+return true;
+}
+return false;
+}
+////////////////////////////////////////////////////////metodos de verificacao///////////////////////////////////////////////////////////////	
+
 	
 	
 	
@@ -180,6 +214,76 @@ public class BeanDeclaracao {
 
 
 
+
+
+	public List<ItemDeclaracao> getListaItensDeclaracoes() {
+		
+		try {
+			this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+		} catch (DAOException e) {
+			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
+		}
+		
+		return listaItensDeclaracoes;
+	}
+	
+	
+
+
+	public int getQuantidadeInicial() {
+		this.quantidadeInicial = (this.getPaginaAtual()) * this.getQuantidadePorPagina();
+		return quantidadeInicial;
+	}
+
+
+
+
+
+	public int getQuantidadePorPagina() {
+		return quantidadePorPagina;
+	}
+
+
+
+
+
+
+	public void setQuantidadePorPagina(int quantidadePorPagina) {
+		this.quantidadePorPagina = quantidadePorPagina;
+	}
+
+
+
+
+
+
+	public int getPaginaAtual() {
+		return paginaAtual;
+	}
+
+
+
+
+
+
+	public void setPaginaAtual(int paginaAtual) {
+		this.paginaAtual = paginaAtual;
+	}
+
+
+
+
+
+
+	public double getTotalPaginas() {
+		try {
+			this.totalPaginas = ((double) (this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes()).size()) / ((double)this.getQuantidadePorPagina());
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return totalPaginas;
+	}
 
 
 ////////////////////////////////////////////////////////gets e sets/////////////////////////////////////////////////////////////////////////

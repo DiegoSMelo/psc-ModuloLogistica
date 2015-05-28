@@ -1,7 +1,10 @@
 package domain.dao;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
 
 import domain.basics.Declaracao;
 import domain.basics.ItemDeclaracao;
@@ -33,5 +36,33 @@ public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclara
 	            throw new DAOException(Mensagens.m3);
 	        }
 	}
+
+	@Override
+	public List<ItemDeclaracao> consultarTodosItensDeclaracoes(Integer indiceInicial, Integer quantidade) throws DAOException {
+		try {
+			String jpql_str = "SELECT itde FROM ItemDeclaracao itde";
+			TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class).setFirstResult(indiceInicial).setMaxResults(quantidade);		
+			
+			return query.getResultList();
+		} catch (Exception e) {
+			
+			throw new DAOException(Mensagens.m4);
+		}
+	}
+
+	@Override
+	public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
+	try {
+		String jpql_str = "SELECT itde FROM ItemDeclaracao itde";
+		TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class);		
+		
+		return query.getResultList();
+	} catch (Exception e) {
+		
+		throw new DAOException(Mensagens.m4);
+	}
+	}
+	
+	
 
 }

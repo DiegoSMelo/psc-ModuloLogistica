@@ -23,10 +23,7 @@ public class BeanDeclaracaoRequest {
 		
 		public BeanDeclaracaoRequest(){
 			this.fachada = new Fachada();
-		}
-		
-		
-		
+		}	
 		
 		
 		public List<Cliente> getListaClientes(){
