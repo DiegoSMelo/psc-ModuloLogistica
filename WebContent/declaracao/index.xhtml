@@ -26,6 +26,14 @@ template="#{beanGeral.template}">
 		<span class="glyphicon glyphicon-import" aria-hidden="true"></span>
 	</h:commandLink>
 
+
+	<h:panelGroup layout="block" styleClass="area_input_busca">
+		<h:outputText value="Buscar: " />
+		
+		<h:inputText id="input_busca" value="#{beanDeclaracao.busca}">
+			<f:ajax event="keyup" execute="@this" render="table-itens paginacao"></f:ajax>
+		</h:inputText>
+	</h:panelGroup>
 </div>
 
 
@@ -50,13 +58,14 @@ template="#{beanGeral.template}">
 		
 		</f:facet>
 		
-		<h:outputText value="#{itde.id.declaracao.dataHora}"></h:outputText>
+		<h:outputText value="#{itde.id.declaracao.dataHora}">
+			 <f:convertDateTime pattern="dd/MM/yyyy" />
+		</h:outputText>
 	</h:column>
 	
 	<h:column>	
 		<f:facet name="header">Item
 		
-			<h:inputText size="10" id="pesquisarItem"></h:inputText>
 		</f:facet>
 		
 		<h:outputText value="#{itde.id.item.descricao}"></h:outputText>
@@ -70,7 +79,7 @@ template="#{beanGeral.template}">
 	<h:column>	
 		<f:facet name="header">Ponto Estratégico
 		
-			<h:inputText size="10" id="pesquisarPonto"></h:inputText>
+			
 		</f:facet>
 		
 		<h:outputText value="#{itde.id.declaracao.pontoEstrategico.nome}"></h:outputText>
@@ -79,8 +88,6 @@ template="#{beanGeral.template}">
 	<h:column>	
 		<f:facet name="header">Cliente
 		
-		
-			<h:inputText size="10" id="pesquisarCliente"></h:inputText>
 		</f:facet>
 		
 		<h:outputText value="#{itde.id.declaracao.cliente.nome}"></h:outputText>

@@ -42,6 +42,8 @@ public class BeanDeclaracao {
 	private Fachada fachada;
 	private ItemDeclaracao itemDeclaracao;
 	
+	private String busca;
+	
 	private Long codigoCliente;
 	private Long codigoItem;
 	private Long codigoPontoEstrategico;
@@ -60,9 +62,11 @@ public class BeanDeclaracao {
 	public BeanDeclaracao(){
 		this.fachada = new Fachada();
 		
+		this.setBusca("");
+		
 		this.itemDeclaracao = new ItemDeclaracao();
 		this.setPaginaAtual(0);
-		this.setQuantidadePorPagina(10);
+		this.setQuantidadePorPagina(30);
 	}
 ////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
 	
@@ -217,9 +221,15 @@ return false;
 
 
 	public List<ItemDeclaracao> getListaItensDeclaracoes() {
-		
 		try {
-			this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+			
+			if (this.getBusca().equals("")) {			
+				this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+			}else{
+				this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getBusca(), this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+			}
+			
+			
 		} catch (DAOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
 		}
@@ -283,6 +293,22 @@ return false;
 			e.printStackTrace();
 		}
 		return totalPaginas;
+	}
+
+
+
+
+
+	public String getBusca() {
+		return busca;
+	}
+
+
+
+
+
+	public void setBusca(String busca) {
+		this.busca = busca;
 	}
 
 

@@ -37,6 +37,10 @@ public class FachadaDeclaracao {
 			return this.rnDeclaracao.consultarTodosItensDeclaracoes(indiceInicial, quantidade);
 		}
 		
+		public List<ItemDeclaracao> consultarTodosItensDeclaracoes(String str_busca, Integer indiceInicial, Integer quantidade) throws DAOException{
+			return this.rnDeclaracao.consultarTodosItensDeclaracoes(str_busca, indiceInicial, quantidade);
+		}
+		
 		public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
 			return this.rnDeclaracao.consultarTodosItensDeclaracoes();
 		}
