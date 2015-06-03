@@ -12,6 +12,7 @@ import domain.dao.IDAOPontoEstrategico;
 import domain.dao.factory.DAOFactory;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
+import domain.exceptions.RnException;
 import domain.util.Mensagens;
 /**
  * 
@@ -30,6 +31,20 @@ public class RNDeclaracao {
 	
 	
 	
+	
+	public void registraSaida(ItemDeclaracao itemDeclaracao) throws RnException{
+		if (itemDeclaracao.getId().getDeclaracao().isSaida()) {
+			itemDeclaracao.getId().getDeclaracao().setDataHora(new Date());
+			
+			this.daoDeclaracao.alterar(itemDeclaracao.getId().getDeclaracao());
+			
+			PontoEstrategico pe = this.daoPontoEstrategico.consultarPorId(itemDeclaracao.getId().getDeclaracao().getPontoEstrategico().getCodigo());
+			pe.setCapacidadeAtualDePrateleiras(pe.getCapacidadeAtualDePrateleiras() + this.calcularQuantidadeDePrateleirasNecessarias(itemDeclaracao));
+			this.daoPontoEstrategico.alterar(pe);
+		}else{
+			throw new RnException(Mensagens.m8);
+		}
+	}
 	
 	
 	public void registraEntrada(ItemDeclaracao itemDeclaracao) throws PontoEstrategicoNaoSuportaDeclaracaoException, DAOException{

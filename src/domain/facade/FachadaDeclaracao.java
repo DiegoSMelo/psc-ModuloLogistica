@@ -5,6 +5,7 @@ import java.util.List;
 import domain.basics.ItemDeclaracao;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
+import domain.exceptions.RnException;
 import domain.rn.RNDeclaracao;
 
 public class FachadaDeclaracao {
@@ -13,6 +14,10 @@ public class FachadaDeclaracao {
 		
 		public FachadaDeclaracao(){
 			this.rnDeclaracao = new RNDeclaracao();
+		}
+		
+		public void registrarSaida(ItemDeclaracao itemDeclaracao) throws RnException{
+			this.rnDeclaracao.registraSaida(itemDeclaracao);
 		}
 		
 		public void registraEntrada(ItemDeclaracao itemDeclaracao) throws PontoEstrategicoNaoSuportaDeclaracaoException, DAOException{

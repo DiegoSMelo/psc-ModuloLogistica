@@ -35,5 +35,10 @@ public class Mensagens {
 	 * Falha no Processo de deletar.
 	 */
 	public static String m7 = "Falha no processo de Deletar";
+	
+	/**
+	 * Declaração inválida.
+	 */
+	public static String m8 = "Declaração inválida.";
 
 }

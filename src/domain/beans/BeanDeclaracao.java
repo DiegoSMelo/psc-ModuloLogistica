@@ -17,6 +17,7 @@ import domain.basics.ItemDeclaracaoPK;
 import domain.basics.enums.TipoDeclaracao;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
+import domain.exceptions.RnException;
 import domain.facade.Fachada;
 
 /* 
@@ -97,11 +98,40 @@ public class BeanDeclaracao {
 	}
 	
 	
+	
+	public void registrarSaida(){
+		
+		this.getItemDeclaracao().getId().getDeclaracao().setTipoDeclaracao(TipoDeclaracao.SAIDA);
+		
+		try {
+			fachada.rnDeclaracao.registraSaida(this.getItemDeclaracao());
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/declaracao/index.xhtml");
+		} catch (RnException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(e.getMessage()));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
+	
 	public void redirectEntrada(){
 		try {
 			this.setItemDeclaracao(new ItemDeclaracao());
 			
 			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/declaracao/registro-entrada.xhtml");
+			
+		} catch (IOException e) {
+			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
+		}
+	}
+	
+	public void redirectSaida(){
+		try {
+			
+			FacesContext.getCurrentInstance().getExternalContext().redirect("/psc-ModuloLogistica/declaracao/registro-saida.xhtml");
 			
 		} catch (IOException e) {
 			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");

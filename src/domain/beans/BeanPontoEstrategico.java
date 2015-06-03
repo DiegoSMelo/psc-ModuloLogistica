@@ -1,7 +1,6 @@
 package domain.beans;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -27,7 +26,8 @@ public class BeanPontoEstrategico {
 ////////////////////////////////atributos///////////////////////////////////////////////////////////////////////////////
 	private Fachada fachada;
 	private PontoEstrategico pontoEstrategico;
-	private List<PontoEstrategico> listaPontosEstrategicos;
+	
+	
 	private String filtroSituacao;
 ////////////////////////////////atributos///////////////////////////////////////////////////////////////////////////////
 
@@ -116,39 +116,6 @@ public class BeanPontoEstrategico {
 		this.pontoEstrategico = pontoEstrategico;
 	}	
 
-	public List<PontoEstrategico> getListaPontosEstrategicos() {
-
-		try {
-			if (this.filtroSituacao != null) {
-				switch (this.filtroSituacao) {
-				case "ALL":
-					this.listaPontosEstrategicos = fachada.rnPontoEstrategico
-					.listarTodosPontosEstrategicos();
-					break;
-				case "ATIVO":
-					this.listaPontosEstrategicos = fachada.rnPontoEstrategico
-					.listarPontosEstrategicosPorSituacao(Situacao.ATIVO);
-					break;
-				case "INATIVO":
-					this.listaPontosEstrategicos = fachada.rnPontoEstrategico
-					.listarPontosEstrategicosPorSituacao(Situacao.INATIVO);
-					break;
-				default:
-					this.listaPontosEstrategicos = fachada.rnPontoEstrategico
-					.listarTodosPontosEstrategicos();
-					break;
-				}
-			}
-		} catch (DAOException e) {
-			RequestContext.getCurrentInstance().execute("alert('"+e.getMessage()+"');");
-		}
-
-		return listaPontosEstrategicos;
-	}
-
-	public void setListaPontosEstrategicos(List<PontoEstrategico> listaPontosEstrategico) {
-		this.listaPontosEstrategicos = listaPontosEstrategico;
-	}
 
 	public String getFiltroSituacao() {
 		if (this.filtroSituacao == null) {
