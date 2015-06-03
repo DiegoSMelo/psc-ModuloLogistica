@@ -54,13 +54,24 @@ template="#{beanGeral.template}">
 	</h:column>
 	
 	<h:column>	
-		<f:facet name="header">Data de Registro
+		<f:facet name="header">Data de Entrada
 		
 		</f:facet>
 		
-		<h:outputText value="#{itde.id.declaracao.dataHora}">
+		<h:outputText value="#{itde.id.declaracao.dataEntrada}">
 			 <f:convertDateTime pattern="dd/MM/yyyy" />
 		</h:outputText>
+	</h:column>
+	
+	<h:column>	
+		<f:facet name="header">Data de Saída
+		
+		</f:facet>
+		
+		<h:outputText value="#{itde.id.declaracao.dataSaida}">
+			 <f:convertDateTime pattern="dd/MM/yyyy" />
+		</h:outputText>
+		
 	</h:column>
 	
 	<h:column>	

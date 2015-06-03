@@ -40,7 +40,7 @@ public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclara
 	@Override
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes(Integer indiceInicial, Integer quantidade) throws DAOException {
 		try {
-			String jpql_str = "SELECT itde FROM ItemDeclaracao itde ORDER BY itde.id.declaracao.data DESC";
+			String jpql_str = "SELECT itde FROM ItemDeclaracao itde";
 			TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class).setFirstResult(indiceInicial).setMaxResults(quantidade);		
 			
 			return query.getResultList();
@@ -53,7 +53,7 @@ public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclara
 	@Override
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
 	try {
-		String jpql_str = "SELECT itde FROM ItemDeclaracao itde ORDER BY itde.id.declaracao.data DESC";
+		String jpql_str = "SELECT itde FROM ItemDeclaracao itde";
 		TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class);		
 		
 		return query.getResultList();
@@ -71,8 +71,7 @@ public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclara
 		String jpql_str = "SELECT itde FROM ItemDeclaracao itde WHERE "
 				+ "itde.id.declaracao.pontoEstrategico.nome LIKE :str OR "
 				+ "itde.id.declaracao.cliente.nome LIKE :str OR "
-				+ "itde.id.item.descricao LIKE :str "
-				+ "ORDER BY itde.id.declaracao.data DESC";
+				+ "itde.id.item.descricao LIKE :str ";
 		
 		TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class).setFirstResult(indiceInicial).setMaxResults(quantidade);
 		

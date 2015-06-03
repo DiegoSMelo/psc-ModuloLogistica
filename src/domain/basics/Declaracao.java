@@ -28,8 +28,13 @@ public class Declaracao {
 	
 	@Temporal(TemporalType.DATE)
 	@Column(nullable=false)
-	private Date data;
+	private Date dataEntrada;
 	
+	@Temporal(TemporalType.DATE)
+	private Date dataSaida;
+	
+
+
 	@Enumerated
 	@Column(nullable=false)
 	private TipoDeclaracao tipoDeclaracao;
@@ -74,11 +79,18 @@ public class Declaracao {
 	public void setCodigo(Long codigo) {
 		Codigo = codigo;
 	}
-	public Date getDataHora() {
-		return data;
+	public Date getDataEntrada() {
+		return dataEntrada;
 	}
-	public void setDataHora(Date dataHora) {
-		this.data = dataHora;
+	public void setDataEntrada(Date data) {
+		this.dataEntrada = data;
+	}
+	public Date getDataSaida() {
+		return dataSaida;
+	}
+
+	public void setDataSaida(Date dataSaida) {
+		this.dataSaida = dataSaida;
 	}
 	public TipoDeclaracao getTipoDeclaracao() {
 		return tipoDeclaracao;

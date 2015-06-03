@@ -34,7 +34,7 @@ public class RNDeclaracao {
 	
 	public void registraSaida(ItemDeclaracao itemDeclaracao) throws RnException{
 		if (itemDeclaracao.getId().getDeclaracao().isSaida()) {
-			itemDeclaracao.getId().getDeclaracao().setDataHora(new Date());
+			itemDeclaracao.getId().getDeclaracao().setDataSaida(new Date());
 			
 			this.daoDeclaracao.alterar(itemDeclaracao.getId().getDeclaracao());
 			
@@ -48,8 +48,8 @@ public class RNDeclaracao {
 	
 	
 	public void registraEntrada(ItemDeclaracao itemDeclaracao) throws PontoEstrategicoNaoSuportaDeclaracaoException, DAOException{
-		if (itemDeclaracao.getId().getDeclaracao().isEntrada() && this.isPontoEstrategicoSuporta(itemDeclaracao)) {
-			itemDeclaracao.getId().getDeclaracao().setDataHora(new Date());
+		if (itemDeclaracao.getId().getDeclaracao().isEntrada() && (itemDeclaracao.getId().getDeclaracao().getPontoEstrategico().getCapacidadeAtualDePrateleiras() > 0) && this.isPontoEstrategicoSuporta(itemDeclaracao)) {
+			itemDeclaracao.getId().getDeclaracao().setDataEntrada(new Date());
 			itemDeclaracao.getId().getDeclaracao().setSituacao(Situacao.ATIVO);
 			
 			this.daoDeclaracao.inserir(itemDeclaracao.getId().getDeclaracao());

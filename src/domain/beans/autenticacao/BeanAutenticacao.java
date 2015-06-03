@@ -43,7 +43,25 @@ public class BeanAutenticacao implements Serializable{
 	
 //////////////////////////////MÉTODOS///////////////////////////////		
 	public void autenticar(){
+		/*
+		Operador op = new Operador();
+		op.setCpf("06423606420");
+		op.setEmail("diosmelo@gmail.com");
+		op.setLogin("diosmelo");
+		op.setSenha("belgica00");
+		op.setNome("Diego Melo");
+		op.setNivelOperador(NivelOperador.ADMINISTRATIVO);
+		op.setSituacaoUsuario(Situacao.ATIVO);
 		
+		
+		try {
+			fachada.rnOperador.salvar(op);
+		} catch (DAOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		*/
 		
 		if ((login != null && senha != null) && (!login.equals("") && !senha.equals(""))) {
 			try {
