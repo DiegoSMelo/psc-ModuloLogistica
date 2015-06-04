@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.List;
 
 import domain.basics.ItemDeclaracao;
-import domain.basics.MedidasPontoEstrategico;
 import domain.basics.PontoEstrategico;
 import domain.basics.enums.Situacao;
+import domain.basics.outros.MedidasPontoEstrategico;
 import domain.dao.IDAODeclaracao;
 import domain.dao.IDAOPontoEstrategico;
 import domain.dao.factory.DAOFactory;
@@ -95,5 +95,9 @@ public class RNDeclaracao {
 	
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
 		return this.daoDeclaracao.consultarTodosItensDeclaracoes();
+	}
+	
+	public List<ItemDeclaracao> filtrarItensDeclaracoes(String filtro_item, String filtro_cliente, String filtro_pontoEstrategico){
+		return this.daoDeclaracao.filtrarItensDeclaracoes(filtro_item, filtro_cliente, filtro_pontoEstrategico);
 	}
 }

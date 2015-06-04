@@ -1,24 +1,30 @@
 .botao-dropdown{	
  margin-left: 20px;
-
- 
 }
-
 
 .btn-acoes{
  margin-left: 10px;
 }
 
-
 .areaPlus{
-margin-bottom: 15px;
+ margin-bottom: 15px;
 }
 
 .selectFiltro{
-	margin-left: 945px;
+ margin-left: 945px;
 }
 
 .area_input_busca{
-	  margin-left: 889px;
-	  margin-top: -31px;
+ margin-left: 914px;
+ margin-top: -31px;
+}
+
+.btn_bscAvancada{
+ margin-left: 1032px;
+}
+
+.btn_escondeBscAvancada{
+ margin-left: 1036px;
+ margin-top: -33px;
+ margin-bottom: 48px;
 }

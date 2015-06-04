@@ -19,7 +19,7 @@ template="#{beanGeral.template}">
 	<h:commandLink actionListener="#{beanPontoEstrategico.redirectAdd}" styleClass="btn btn-success">Adicionar</h:commandLink>
 	
 <h:outputLabel styleClass="selectFiltro" value="Filtrar por: ">
-	<h:selectOneMenu styleClass="form-control" value="#{beanPontoEstrategico.filtroSituacao}">
+	<h:selectOneMenu styleClass="form-control" value="#{beanPontoEstrategicoRequest.filtroSituacao}">
 		<f:selectItem noSelectionOption="false" itemLabel="Tudo" itemValue="ALL"></f:selectItem>
 		<f:selectItems value="#{beanPontoEstrategico.listaSituacoes}"></f:selectItems>
 		

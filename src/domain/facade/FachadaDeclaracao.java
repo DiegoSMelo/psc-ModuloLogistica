@@ -49,4 +49,8 @@ public class FachadaDeclaracao {
 		public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException{
 			return this.rnDeclaracao.consultarTodosItensDeclaracoes();
 		}
+		
+		public List<ItemDeclaracao> filtrarItensDeclaracoes(String filtro_item, String filtro_cliente, String filtro_pontoEstrategico){
+			return this.rnDeclaracao.filtrarItensDeclaracoes(filtro_item, filtro_cliente, filtro_pontoEstrategico);
+		}
 }

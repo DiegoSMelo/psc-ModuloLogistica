@@ -1,4 +1,4 @@
-package domain.basics;
+package domain.basics.outros;
 
 /**
  * 

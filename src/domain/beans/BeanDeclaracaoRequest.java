@@ -21,8 +21,11 @@ public class BeanDeclaracaoRequest {
 		private Fachada fachada;
 		
 		
+		
 		public BeanDeclaracaoRequest(){
 			this.fachada = new Fachada();
+			
+		
 		}	
 		
 		
@@ -52,4 +55,6 @@ public class BeanDeclaracaoRequest {
 			}
 			return null;
 		}
+		
+		
 }

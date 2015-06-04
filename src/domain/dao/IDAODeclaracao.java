@@ -17,4 +17,5 @@ public interface IDAODeclaracao extends IDAOGeneric<Declaracao>{
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes(Integer indiceInicial, Integer quantidade) throws DAOException;
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes() throws DAOException;
 	public List<ItemDeclaracao> consultarTodosItensDeclaracoes(String str_busca, Integer indiceInicial, Integer quantidade) throws DAOException;
+	public List<ItemDeclaracao> filtrarItensDeclaracoes(String filtro_item, String filtro_cliente, String filtro_pontoEstrategico);
 }

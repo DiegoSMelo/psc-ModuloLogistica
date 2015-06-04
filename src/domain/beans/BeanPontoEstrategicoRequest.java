@@ -17,18 +17,19 @@ public class BeanPontoEstrategicoRequest {
 	
 	private Fachada fachada;
 	private List<PontoEstrategico> listaPontosEstrategicos;
-	private BeanPontoEstrategico beanPontoEstrategico;
+	private String filtroSituacao;
+	
 	
 	public BeanPontoEstrategicoRequest(){
 		this.fachada = new Fachada();
-		this.beanPontoEstrategico = new BeanPontoEstrategico();
+		
 	}
 	
 	public List<PontoEstrategico> getListaPontosEstrategicos() {
 
 		try {
-			if (this.beanPontoEstrategico.getFiltroSituacao() != null) {
-				switch (this.beanPontoEstrategico.getFiltroSituacao()) {
+			if (this.getFiltroSituacao() != null) {
+				switch (this.getFiltroSituacao()) {
 				case "ALL":
 					this.listaPontosEstrategicos = fachada.rnPontoEstrategico
 					.listarTodosPontosEstrategicos();
@@ -56,6 +57,18 @@ public class BeanPontoEstrategicoRequest {
 
 	public void setListaPontosEstrategicos(List<PontoEstrategico> listaPontosEstrategico) {
 		this.listaPontosEstrategicos = listaPontosEstrategico;
+	}
+	
+	
+	public String getFiltroSituacao() {
+		if (this.filtroSituacao == null) {
+			this.filtroSituacao = "ALL";
+		}
+		return filtroSituacao;
+	}
+
+	public void setFiltroSituacao(String filtroSituacao) {
+		this.filtroSituacao = filtroSituacao;
 	}
 
 }

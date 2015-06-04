@@ -15,24 +15,12 @@ import domain.basics.Item;
 import domain.basics.ItemDeclaracao;
 import domain.basics.ItemDeclaracaoPK;
 import domain.basics.enums.TipoDeclaracao;
+import domain.basics.outros.Pesquisa;
 import domain.exceptions.DAOException;
 import domain.exceptions.PontoEstrategicoNaoSuportaDeclaracaoException;
 import domain.exceptions.RnException;
 import domain.facade.Fachada;
 
-/* 
-data - automatico
-tipoDeclaracao - automatico
-responsavelEntrega - form
-responsavelRecebimento - form
-pontoEstrategico - form(via select)
-cliente - form(via select)
-situacao - automatico (ativo)
-
-item - form(via caixa de pesquisa)
-
-quantidade - form
- */
 
 
 @ManagedBean
@@ -54,6 +42,10 @@ public class BeanDeclaracao {
 	private int quantidadePorPagina;
 	private int paginaAtual;
 	private double totalPaginas;
+	
+	
+	
+	private Pesquisa pesquisa;
 ////////////////////////////////////////////////////////atributos/////////////////////////////////////////////////////////////////////////
 	
 	
@@ -68,6 +60,9 @@ public class BeanDeclaracao {
 		this.itemDeclaracao = new ItemDeclaracao();
 		this.setPaginaAtual(0);
 		this.setQuantidadePorPagina(30);
+		
+		
+		this.setPesquisa(new Pesquisa());
 	}
 ////////////////////////////////////////////////////////construtor/////////////////////////////////////////////////////////////////////////
 	
@@ -95,6 +90,7 @@ public class BeanDeclaracao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		this.zeraPesquisa();
 	}
 	
 	
@@ -113,8 +109,12 @@ public class BeanDeclaracao {
 			e.printStackTrace();
 		}
 		
+		this.zeraPesquisa();
 	}
 	
+	public void zeraPesquisa(){
+		this.setPesquisa(new Pesquisa());
+	}
 	
 	
 	public void redirectEntrada(){
@@ -251,12 +251,26 @@ return false;
 
 
 	public List<ItemDeclaracao> getListaItensDeclaracoes() {
+		
+		System.out.println(this.getPesquisa().getStr_cliente());
+		
 		try {
 			
-			if (this.getBusca().equals("")) {			
-				this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+			if (			
+					(this.getPesquisa().getStr_cliente() != null && !this.getPesquisa().getStr_cliente().equals("")) ||
+					(this.getPesquisa().getStr_item() != null && !this.getPesquisa().getStr_item().equals("")) ||
+					(this.getPesquisa().getStr_pontoEstrategico() != null && !this.getPesquisa().getStr_pontoEstrategico().equals(""))	
+			) {
+				
+				this.listaItensDeclaracoes = this.fachada.rnDeclaracao.filtrarItensDeclaracoes(this.getPesquisa().getStr_item(), this.getPesquisa().getStr_cliente(), this.getPesquisa().getStr_pontoEstrategico());
 			}else{
-				this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getBusca(), this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+				
+				if (this.getBusca().equals("")) {			
+					this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+				}else{
+					this.listaItensDeclaracoes = this.fachada.rnDeclaracao.consultarTodosItensDeclaracoes(this.getBusca(), this.getQuantidadeInicial(), this.getQuantidadePorPagina());
+				}
+				
 			}
 			
 			
@@ -340,6 +354,22 @@ return false;
 	public void setBusca(String busca) {
 		this.busca = busca;
 	}
+
+
+
+
+	public Pesquisa getPesquisa() {
+		return pesquisa;
+	}
+
+
+
+
+
+	public void setPesquisa(Pesquisa pesquisa) {
+		this.pesquisa = pesquisa;
+	}
+	
 
 
 ////////////////////////////////////////////////////////gets e sets/////////////////////////////////////////////////////////////////////////

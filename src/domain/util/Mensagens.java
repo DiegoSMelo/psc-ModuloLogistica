@@ -40,5 +40,10 @@ public class Mensagens {
 	 * Declaração inválida.
 	 */
 	public static String m8 = "Declaração inválida.";
+	
+	/**
+	 * Os campos de pesquisa estão em branco.
+	 */
+	public static String m9 = "Os campos de pesquisa estão em branco.";
 
 }

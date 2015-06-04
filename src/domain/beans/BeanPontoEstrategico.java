@@ -28,7 +28,7 @@ public class BeanPontoEstrategico {
 	private PontoEstrategico pontoEstrategico;
 	
 	
-	private String filtroSituacao;
+	
 ////////////////////////////////atributos///////////////////////////////////////////////////////////////////////////////
 
 
@@ -117,16 +117,7 @@ public class BeanPontoEstrategico {
 	}	
 
 
-	public String getFiltroSituacao() {
-		if (this.filtroSituacao == null) {
-			this.filtroSituacao = "ALL";
-		}
-		return filtroSituacao;
-	}
-
-	public void setFiltroSituacao(String filtroSituacao) {
-		this.filtroSituacao = filtroSituacao;
-	}
+	
 	
 	public Situacao[] getListaSituacoes(){
 		return Situacao.values();

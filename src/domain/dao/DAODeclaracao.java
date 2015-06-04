@@ -80,6 +80,45 @@ public class DAODeclaracao extends DAOGeneric<Declaracao> implements IDAODeclara
 		return query.getResultList();
 	}
 
+	@Override
+	public List<ItemDeclaracao> filtrarItensDeclaracoes(String filtro_item, String filtro_cliente, String filtro_pontoEstrategico){
+			
+			
+			String jpql_str = "SELECT itde FROM ItemDeclaracao itde WHERE 1 = 1 ";
+			
+			if(filtro_item != null && !filtro_item.trim().equals("")){
+				jpql_str += "AND itde.id.item.descricao LIKE :str_item ";
+			}
+			
+			if(filtro_cliente != null && !filtro_cliente.trim().equals("")){
+				jpql_str += "AND itde.id.declaracao.cliente.nome LIKE :str_cliente ";
+			}
+			
+			if(filtro_pontoEstrategico != null && !filtro_pontoEstrategico.trim().equals("")){
+				jpql_str += "AND itde.id.declaracao.pontoEstrategico.nome LIKE :str_pontoEstrategico ";
+			}
+		
+		
+			
+			TypedQuery<ItemDeclaracao> query = entityManager.createQuery(jpql_str, ItemDeclaracao.class);
+			
+			if(filtro_item != null && !filtro_item.trim().equals("")){
+				query.setParameter("str_item", "%" + filtro_item + "%");
+			}
+			
+			if(filtro_cliente != null && !filtro_cliente.trim().equals("")){
+				query.setParameter("str_cliente", "%" + filtro_cliente + "%");			
+			}
+			
+			if(filtro_pontoEstrategico != null && !filtro_pontoEstrategico.trim().equals("")){
+				query.setParameter("str_pontoEstrategico", "%" + filtro_pontoEstrategico + "%");
+			}
+		
+			
+			return query.getResultList();
+		
+	}
+
 
 	
 	
